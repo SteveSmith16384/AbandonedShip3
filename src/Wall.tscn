@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_Area2D_area_shape_entered(area_id, area, area_shape, self_shape):
+	pass # Replace with function body.
+"
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 229, 128.123 )
+
+[node name="Wall_Node2D" type="Node2D"]
+script = SubResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 273, 177 )
+shape = SubResource( 2 )
+
+[node name="Line2D" type="Line2D" parent="StaticBody2D"]
+position = Vector2( 280.767, 135.619 )
+rotation = 0.00261394
+scale = Vector2( 0.964088, 0.949237 )
+points = PoolVector2Array( -189.081, -30.6289, 206.905, -36.541, -191.584, 159.378, 204.401, 153.17 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+position = Vector2( 183.49, 406.657 )
+scale = Vector2( 0.879808, 0.860577 )
+build_mode = 1
+polygon = PoolVector2Array( 2, 3, 34, 163, 114, 83, 274, 179, 346, 99, 426, 179, 522, 19, 354, -21, 298, 67, 186, -29, 82, 51 )
+
+[node name="Line2D" type="Line2D" parent="StaticBody2D2/CollisionPolygon2D"]
+points = PoolVector2Array( 36.9513, 159.594, 0.579666, 1.56055, 82.4157, 48.041, 182.438, -35.6238, 300.645, 66.6331, 355.202, -17.0316, 518.875, 20.1527, 427.946, 178.186, 346.11, 103.818, 273.366, 178.186, 109.694, 85.2254, 36.9512, 159.594 )

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/sprites/greenblip.png" type="Texture" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 28.0179
+
+[node name="Player_KinematicBody2D" type="KinematicBody2D"]
+position = Vector2( 75, 74 )
+input_pickable = true
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+[connection signal="clicked" from="." to="." method="_on_Player_KinematicBody2D_clicked"]
+[connection signal="input_event" from="." to="." method="_on_Player_KinematicBody2D_input_event"]
