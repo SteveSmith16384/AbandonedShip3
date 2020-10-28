@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/middle_deck.png" type="Texture" id=1]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -23,16 +25,43 @@ func _on_Area2D_area_shape_entered(area_id, area, area_shape, self_shape):
 	pass # Replace with function body.
 "
 
+[sub_resource type="CanvasItemMaterial" id=3]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 135.659, 24.8288 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 15.8246, 139.733 )
+
 [node name="Wall_Node2D" type="Node2D"]
 script = SubResource( 1 )
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
-position = Vector2( 183.49, 406.657 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( 250, 400 )
 scale = Vector2( 0.879808, 0.860577 )
 build_mode = 1
-polygon = PoolVector2Array( 2, 3, 34, 163, 114, 83, 274, 179, 346, 99, 426, 179, 522, 19, 354, -21, 298, 67, 186, -29, 82, 51 )
+polygon = PoolVector2Array( -82.5244, -96.906, -79.8211, -72.0323, -74.4144, 205.724, 274, 179, 346, 99, 426, 179, 522, 19, 354, -21, 298, 67, 186, -29, 82, 51 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="Line2D" type="Line2D" parent="StaticBody2D2/CollisionPolygon2D"]
+[node name="Line2D" type="Line2D" parent="StaticBody2D/CollisionPolygon2D"]
 points = PoolVector2Array( 36.9513, 159.594, 0.579666, 1.56055, 82.4157, 48.041, 182.438, -35.6238, 300.645, 66.6331, 355.202, -17.0316, 518.875, 20.1527, 427.946, 178.186, 346.11, 103.818, 273.366, 178.186, 109.694, 85.2254, 36.9512, 159.594 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+modulate = Color( 0.854902, 0.137255, 0.137255, 1 )
+material = SubResource( 3 )
+position = Vector2( 125, 300 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 1400, 350 )
+shape = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1050, 1000 )
+scale = Vector2( 10, 10 )
+z_index = -1
+texture = ExtResource( 1 )
