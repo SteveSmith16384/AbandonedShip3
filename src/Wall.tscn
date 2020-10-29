@@ -25,9 +25,9 @@ func _on_Area2D_area_shape_entered(area_id, area, area_shape, self_shape):
 	pass # Replace with function body.
 "
 
-[sub_resource type="CanvasItemMaterial" id=3]
+[sub_resource type="CanvasItemMaterial" id=2]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 135.659, 24.8288 )
 
 [sub_resource type="RectangleShape2D" id=4]
@@ -52,9 +52,9 @@ points = PoolVector2Array( 36.9513, 159.594, 0.579666, 1.56055, 82.4157, 48.041,
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 modulate = Color( 0.854902, 0.137255, 0.137255, 1 )
-material = SubResource( 3 )
+material = SubResource( 2 )
 position = Vector2( 125, 300 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 1400, 350 )
