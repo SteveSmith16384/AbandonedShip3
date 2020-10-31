@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/toggle2.wav-ee691f699d9d7cde5ea84877a98dd966.sample"
+
+[deps]
+
+source_file="res://assets/sfx/toggle2.wav"
+dest_files=[ "res://.import/toggle2.wav-ee691f699d9d7cde5ea84877a98dd966.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

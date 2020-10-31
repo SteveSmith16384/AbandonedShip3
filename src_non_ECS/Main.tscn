@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=2]
+[ext_resource path="res://Shadowfire.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GUI.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Environment" id=1]
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 885.35, 77.0558, 0, 0, 0, 0, 901.913, -133.603, 0, 0, 0, 0, 1080.29, 40.0215, 0, 0, 0, 0, 1118.35, 161.321, 0, 0, 0, 0, 1049.37, 663.166, 0, 0, 0, 0, 686.459, 277.282, 0, 0, 0, 0, 885.35, 77.0558 )
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="ShadowfireMap" parent="." instance=ExtResource( 3 )]
+
+[node name="Enemy_Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 746.922, 136.671 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" parent="CanvasLayer" instance=ExtResource( 5 )]
+margin_bottom = 191.0
