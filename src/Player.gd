@@ -1,19 +1,18 @@
 extends KinematicBody2D
 
 signal clicked(entity)
-signal clicked2
-#signal hit
+#signal clicked2
 
-var screen_size  # Size of the game window.
-
-export (int) var speed = 200
+export (int) var speed = 100
 
 var target = Vector2()
 var velocity = Vector2()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	screen_size = get_viewport_rect().size
+	#screen_size = get_viewport_rect().size
+	
+	target = position
 	pass
 
 
@@ -41,8 +40,8 @@ func _on_Player_body_entered(body):
 
 func start(pos):
 	position = pos
-	show()
-	$CollisionShape2D.disabled = false
+	#show()
+	#$CollisionShape2D.disabled = false
 	pass
 	
 	
@@ -58,6 +57,6 @@ func _on_Player_input_event():
 func _on_Player_KinematicBody2D_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed('leftclick'):
 		emit_signal("clicked", self)
-		emit_signal("clicked2")
+		#emit_signal("clicked2")
 		#print("Selected")
 

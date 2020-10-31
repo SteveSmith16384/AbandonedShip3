@@ -1,6 +1,6 @@
 extends Node2D
 
-export (PackedScene) var Playerxx
+#export (PackedScene) var Playerxx
 
 var players = []
 var selected_avatar = null
@@ -11,21 +11,23 @@ var patrol_index = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	selected_avatar = $ShadowfireMap/Player_KinematicBody2D
+	
 	if $Path2D:
 		patrol_path = $Path2D
 		patrol_points = $Path2D.curve.get_baked_points()
 		
-	var player = Playerxx.instance()
-	player.position.x = 100
-	add_child(player)
-	players.push_back(player)
-	var res = player.connect("clicked", self, "handleclicked")
+	#var player = Playerxx.instance()
+	#player.position.x = 100
+	#add_child(player)
+	#players.push_back(player)
+	#var res = player.connect("clicked", self, "handleclicked")
 	
-	var player2 = Playerxx.instance()
-	player2.position.x = 200
-	add_child(player2)
-	players.push_back(player2)
-	res = player2.connect("clicked", self, "handleclicked")
+	#var player2 = Playerxx.instance()
+	#player2.position.x = 200
+	#add_child(player2)
+	#players.push_back(player2)
+	#res = player2.connect("clicked", self, "handleclicked")
 	
 	#emit_signal("test")
 
@@ -88,8 +90,8 @@ func _input(event):
 
 
 
-#func _on_Player_clicked(entity):
-#	print("Avatar selected")
+func _on_Player_clicked(entity):
+	print("Avatar selected")
 #	if (is_instance_valid(selected_avatar)):
 #		selected_avatar.remove_child(0)
 #	selected_avatar = entity
