@@ -22,5 +22,5 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
-[connection signal="input_event" from="." to="." method="_on_UnitEntity_input_event"]
 [connection signal="input_event" from="." to="Components/SelectableComponent" method="_on_UnitEntity_input_event"]
+[connection signal="input_event" from="." to="." method="_on_UnitEntity_input_event"]

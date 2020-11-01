@@ -29,7 +29,12 @@ func _input(event):
 	# Mouse in viewport coordinates.
 	if event is InputEventMouseButton:
 		print("Mouse Click/Unclick at: ", event.position)
-		selected_unit = getEntityAtPosition(event.position)
+		if event.button_index == 1:
+			var e = getEntityAtPosition(event.position)
+			if e:
+				selected_unit = e
+		elif event.button_index == 2 and selected_unit:
+			setDestination(event.position)
 	#elif event is InputEventMouseMotion:
 		#print("Mouse Motion at: ", event.position)
 
@@ -43,3 +48,11 @@ func getEntityAtPosition(position : Vector2):
 	var e = system.get_entity_at(entities, pos)
 	return e
 	pass
+
+func setDestination(position : Vector2):
+	var pos = Vector2(position)
+	pos.x += $Camera2D.position.x - screen_size.x/2
+	pos.y += $Camera2D.position.y - screen_size.y/2
+	var c = ECS.entity_get_component(selected_unit.id, "destinationcomponent")
+	c.destination = pos
+	
