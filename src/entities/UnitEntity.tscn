@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://gs_ecs/entity.gd" type="Script" id=1]
+[ext_resource path="res://entities/UnitEntity.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://components/SelectableComponent.tscn" type="PackedScene" id=3]
 [ext_resource path="res://components/DestinationComponent.tscn" type="PackedScene" id=4]
@@ -22,4 +22,5 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
+[connection signal="input_event" from="." to="." method="_on_UnitEntity_input_event"]
 [connection signal="input_event" from="." to="Components/SelectableComponent" method="_on_UnitEntity_input_event"]

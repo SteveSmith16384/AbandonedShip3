@@ -154,8 +154,7 @@ func add_group(group, systems = []):
 
 
 # remove everything from the framework
-func clean():
-	
+func clean():	
 	do_clean = true
 	
 
