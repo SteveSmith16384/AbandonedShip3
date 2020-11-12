@@ -1,9 +1,9 @@
-class_name CanMoveComponent
+#class_name CanMoveComponent
 extends Component
 
-export var speed : int
+var speed : int = 100
 
-func _init(_speed):
-	speed = _speed
-	pass
+#func _init(_speed):
+#	speed = _speed
+#	pass
 	

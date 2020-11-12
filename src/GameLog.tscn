@@ -1,0 +1,18 @@
+[gd_scene format=2]
+
+[node name="GameLog" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -99.0
+margin_right = 40.0
+text = "1
+2
+3
+4
+5
+6"
+__meta__ = {
+"_edit_use_anchors_": false
+}

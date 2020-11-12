@@ -1,35 +1,43 @@
 extends Node
 
 var selected_unit : Entity
-#var units[]
+var units = {}
 var screen_size
+
 
 func _ready():
 	create_units()
 	screen_size = get_viewport().size
 	
+	
 func create_units():
 	var start_pos = get_node("StartLocation")
 	
+	var syylk = create_unit("zark", start_pos)
+	create_unit("syylk", start_pos)
+	create_unit("sevrina", start_pos)
+	create_unit("torik", start_pos)
+	create_unit("manto", start_pos)
+	create_unit("maul", start_pos)
+	
+	selected_unit = syylk
+	pass
+	
 
+func create_unit(name, start_pos):
 	var unit = load("res://entities/UnitEntity.tscn")
 	
 	var syylk = unit.instance()
 	add_child(syylk)
 	syylk.position = start_pos.position
-	var syylk_img = preload("res://assets/sprites/syylk.png")
+	var syylk_img = load("res://assets/sprites/" + name + ".png")
 	syylk.get_node("Sprite").set_texture(syylk_img)
 	
-	var sevrina = unit.instance()
-	add_child(sevrina)
-	sevrina.position = start_pos.position
-	var sevrina_img = preload("res://assets/sprites/sevrina.png")
-	sevrina.get_node("Sprite").set_texture(sevrina_img)
-	
-	selected_unit = syylk
+	units[name] = syylk
+	return syylk
 	pass
 	
-	
+		
 func _process(delta):
 	ECS.update()
 	
@@ -71,3 +79,6 @@ func setDestination(position : Vector2):
 	c.destination = pos
 	c.has_destination = true
 	
+
+func select_unit(name):
+	pass
