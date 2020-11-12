@@ -11,16 +11,24 @@ func _ready():
 func create_units():
 	var start_pos = get_node("StartLocation")
 	
-	var syylk_img = preload("res://assets/sprites/syylk.png")
 
 	var unit = load("res://entities/UnitEntity.tscn")
+	
 	var syylk = unit.instance()
 	add_child(syylk)
 	syylk.position = start_pos.position
+	var syylk_img = preload("res://assets/sprites/syylk.png")
 	syylk.get_node("Sprite").set_texture(syylk_img)
+	
+	var sevrina = unit.instance()
+	add_child(sevrina)
+	sevrina.position = start_pos.position
+	var sevrina_img = preload("res://assets/sprites/sevrina.png")
+	sevrina.get_node("Sprite").set_texture(sevrina_img)
 	
 	selected_unit = syylk
 	pass
+	
 	
 func _process(delta):
 	ECS.update()
@@ -28,16 +36,9 @@ func _process(delta):
 	if selected_unit:
 		$Camera2D.position = selected_unit.position
 
-#	if Input.is_mouse_button_pressed(0):
-#		print("mouse0!")
-#	elif Input.is_mouse_button_pressed(1):
-#		print("mouse1!")
-#		#selected_unit = getEntityAtPosition()
-#	elif Input.is_mouse_button_pressed(2):
-#		print("mouse2!")
-#	elif Input.is_mouse_button_pressed(3):
-#		print("mouse3!")
-
+	pass
+	
+	
 func _input(event):
 	# Mouse in viewport coordinates.
 	if event is InputEventMouseButton:
@@ -48,9 +49,8 @@ func _input(event):
 				selected_unit = e
 		elif event.button_index == 2 and selected_unit:
 			setDestination(event.position)
-	#elif event is InputEventMouseMotion:
-		#print("Mouse Motion at: ", event.position)
-
+	pass
+	
 
 func getEntityAtPosition(position : Vector2):
 	var system = ECS.systems.get("selectunitsystem")
@@ -61,6 +61,7 @@ func getEntityAtPosition(position : Vector2):
 	var e = system.get_entity_at(entities, pos)
 	return e
 	pass
+
 
 func setDestination(position : Vector2):
 	var pos = Vector2(position)

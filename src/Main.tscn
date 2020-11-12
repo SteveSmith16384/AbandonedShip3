@@ -1,17 +1,19 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://systems/SelectUnitSystem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://StartLocation.tscn" type="PackedScene" id=2]
 [ext_resource path="res://systems/MoveToDestinationSystem.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Main.gd" type="Script" id=4]
 [ext_resource path="res://entities/ShadowfireMapEntity.tscn" type="PackedScene" id=5]
-[ext_resource path="res://HUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UnitSelector.tscn" type="PackedScene" id=6]
+[ext_resource path="res://CommandSelector.tscn" type="PackedScene" id=7]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 4 )
 
-[node name="HUD" parent="." instance=ExtResource( 6 )]
-position = Vector2( 503.336, -291.795 )
+[node name="CommandSelector" parent="." instance=ExtResource( 7 )]
+
+[node name="UnitSelector" parent="." instance=ExtResource( 6 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
