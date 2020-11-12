@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/greenblip.png-163a32430eb55abe8e5cb83ead4d330e.stex"
+path="res://.import/manto.png-857129a613d65c2817a517195676dd07.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/greenblip.png"
-dest_files=[ "res://.import/greenblip.png-163a32430eb55abe8e5cb83ead4d330e.stex" ]
+source_file="res://assets/sprites/manto.png"
+dest_files=[ "res://.import/manto.png-857129a613d65c2817a517195676dd07.stex" ]
 
 [params]
 

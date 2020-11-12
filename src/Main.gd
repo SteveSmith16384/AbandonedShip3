@@ -1,13 +1,26 @@
 extends Node
 
-var selected_unit
+var selected_unit : Entity
 #var units[]
 var screen_size
 
 func _ready():
-	#selected_unit = $Entities/UnitEntity
-	screen_size = get_viewport().size #get_viewport_rect().size
+	create_units()
+	screen_size = get_viewport().size
 	
+func create_units():
+	var start_pos = get_node("StartLocation")
+	
+	var syylk_img = preload("res://assets/sprites/syylk.png")
+
+	var unit = load("res://entities/UnitEntity.tscn")
+	var syylk = unit.instance()
+	add_child(syylk)
+	syylk.position = start_pos.position
+	syylk.get_node("Sprite").set_texture(syylk_img)
+	
+	selected_unit = syylk
+	pass
 	
 func _process(delta):
 	ECS.update()
@@ -55,4 +68,5 @@ func setDestination(position : Vector2):
 	pos.y += $Camera2D.position.y - screen_size.y/2
 	var c = ECS.entity_get_component(selected_unit.id, "destinationcomponent")
 	c.destination = pos
+	c.has_destination = true
 	

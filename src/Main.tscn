@@ -1,13 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://systems/SelectUnitSystem.tscn" type="PackedScene" id=1]
-[ext_resource path="res://entities/UnitEntity.tscn" type="PackedScene" id=2]
+[ext_resource path="res://StartLocation.tscn" type="PackedScene" id=2]
 [ext_resource path="res://systems/MoveToDestinationSystem.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Main.gd" type="Script" id=4]
 [ext_resource path="res://entities/ShadowfireMapEntity.tscn" type="PackedScene" id=5]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=6]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 4 )
+
+[node name="HUD" parent="." instance=ExtResource( 6 )]
+position = Vector2( 503.336, -291.795 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -20,10 +24,8 @@ current = true
 
 [node name="Entities" type="Node" parent="."]
 
-[node name="UnitEntity1" parent="Entities" instance=ExtResource( 2 )]
-
 [node name="ShadowfireMapEntity" parent="Entities" instance=ExtResource( 5 )]
 z_index = -1
 
-[node name="UnitEntity2" parent="Entities" instance=ExtResource( 2 )]
-position = Vector2( 97.5151, 82.0553 )
+[node name="StartLocation" parent="." instance=ExtResource( 2 )]
+position = Vector2( 778, 1264 )
