@@ -13,10 +13,10 @@ func get_entity_at(entities, position : Vector2):
 		var dist = position.distance_to(entityposition)
 		print(dist)
 		if (dist < area.radius):
-			print("Unit selected")
+			#print("Unit selected")
 			return entity
 	
-	print("NO Unit selected")
+	print("NO entity found")
 	return null
 	pass
 	

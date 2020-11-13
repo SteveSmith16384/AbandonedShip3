@@ -54,7 +54,7 @@ func _input(event):
 		if event.button_index == 1:
 			var e = getEntityAtPosition(event.position)
 			if e:
-				selected_unit = e
+				select_unit_by_entity(e)
 		elif event.button_index == 2 and selected_unit:
 			setDestination(event.position)
 	pass
@@ -78,7 +78,16 @@ func setDestination(position : Vector2):
 	var c = ECS.entity_get_component(selected_unit.id, "destinationcomponent")
 	c.destination = pos
 	c.has_destination = true
+	#todo - voice
 	
 
-func select_unit(name):
+func select_unit_by_name(name):
+	select_unit_by_entity(units[name])
+	
+	
+func select_unit_by_entity(e):
+	selected_unit = e
+	if ECS.entity_has_component(selected_unit.id, "hasvoicecomponent"):
+		var c = ECS.entity_get_component(selected_unit.id, "hasvoicecomponent")
+		c.to_play = 1
 	pass
