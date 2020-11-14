@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://systems/SelectUnitSystem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://StartLocation.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://systems/FogOfWarSystem.tscn" type="PackedScene" id=9]
 [ext_resource path="res://systems/ShootingSystem.tscn" type="PackedScene" id=10]
 [ext_resource path="res://systems/VoiceSystem.tscn" type="PackedScene" id=11]
+[ext_resource path="res://entities/EnemyEntity.tscn" type="PackedScene" id=12]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 4 )
@@ -34,6 +35,9 @@ current = true
 
 [node name="ShadowfireMapEntity" parent="Entities" instance=ExtResource( 5 )]
 z_index = -1
+
+[node name="EnemyEntity" parent="Entities" instance=ExtResource( 12 )]
+position = Vector2( 794.788, 1497.65 )
 
 [node name="StartLocation" parent="." instance=ExtResource( 2 )]
 position = Vector2( 778, 1264 )
