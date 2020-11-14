@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/cduckett-03-roger.wav-a3803db2c740cc8448fa17eb14d65439.sample"
+
+[deps]
+
+source_file="res://assets/sfx/voices/sevrina/cduckett-03-roger.wav"
+dest_files=[ "res://.import/cduckett-03-roger.wav-a3803db2c740cc8448fa17eb14d65439.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

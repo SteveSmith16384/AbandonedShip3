@@ -78,7 +78,11 @@ func setDestination(position : Vector2):
 	var c = ECS.entity_get_component(selected_unit.id, "destinationcomponent")
 	c.destination = pos
 	c.has_destination = true
-	#todo - voice
+	
+	# Do voice
+	if ECS.entity_has_component(selected_unit.id, "hasvoicecomponent"):
+		var hv = ECS.entity_get_component(selected_unit.id, "hasvoicecomponent")
+		hv.to_play = 2 # todo - enum
 	
 
 func select_unit_by_name(name):
@@ -89,5 +93,5 @@ func select_unit_by_entity(e):
 	selected_unit = e
 	if ECS.entity_has_component(selected_unit.id, "hasvoicecomponent"):
 		var c = ECS.entity_get_component(selected_unit.id, "hasvoicecomponent")
-		c.to_play = 1
+		c.to_play = 1 # todo - enum
 	pass
