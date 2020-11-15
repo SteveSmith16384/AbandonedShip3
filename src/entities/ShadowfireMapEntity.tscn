@@ -9,6 +9,10 @@ extents = Vector2( 208.044, 62.5793 )
 extents = Vector2( 80.277, 156.552 )
 
 [node name="ShadowfireMapEntity" type="Node2D"]
+__meta__ = {
+"_editor_description_": "Shadowfire Map
+"
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

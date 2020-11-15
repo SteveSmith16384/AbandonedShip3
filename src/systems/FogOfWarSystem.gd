@@ -1,3 +1,4 @@
+class_name FogOfWarSystem
 extends System
 
 func on_process_entity(entity : Entity, delta: float):
@@ -15,6 +16,17 @@ func check_if_visible(enemy):
 	for unit in main.units.values():
 		var result = check_can_see(enemy, unit, main, space_state)
 		if result:
+			# Stop moving
+			var dc = ECS.entity_get_component(unit.id, "destinationcomponent")
+			if dc:
+				dc.has_destination = false
+				
+			# Voice
+			if enemy.get_node("Sprite").visible == false:
+				if ECS.entity_has_component(unit.id, "hasvoicecomponent"):
+					var hvc = ECS.entity_get_component(unit.id, "hasvoicecomponent")
+					hvc.to_play = 3
+					
 			enemy.get_node("Sprite").visible = true
 			break;
 		

@@ -4,4 +4,4 @@
 
 [node name="ShootingSystem" type="Node2D"]
 script = ExtResource( 1 )
-COMPONENTS = "CanShootComponent"
+COMPONENTS = "IsUnitComponent"
