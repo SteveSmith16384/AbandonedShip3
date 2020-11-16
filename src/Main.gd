@@ -14,11 +14,11 @@ func create_units():
 	var start_pos = get_node("StartLocation")
 	
 	var syylk = create_unit("zark", start_pos)
-	#create_unit("syylk", start_pos)
-	#create_unit("sevrina", start_pos)
-	#create_unit("torik", start_pos)
-	#create_unit("manto", start_pos)
-	#create_unit("maul", start_pos)
+	create_unit("syylk", start_pos)
+	create_unit("sevrina", start_pos)
+	create_unit("torik", start_pos)
+	create_unit("manto", start_pos)
+	create_unit("maul", start_pos)
 	
 	selected_unit = syylk
 	pass
@@ -33,11 +33,19 @@ func create_unit(name, start_pos):
 	var syylk_img = load("res://assets/sprites/" + name + ".png")
 	syylk.get_node("Sprite").set_texture(syylk_img)
 	
+	#  Add icon
+	var b = load("res://gui/UnitSelectorButton.tscn")
+	var button = b.instance()
+	button.unit = syylk
+	button.text = name
+	button.icon = syylk_img
+	var node = get_node("HUD/UnitSelector/MarginContainer/VBoxContainer")
+	node.add_child(button)
+	
 	units[name] = syylk
 	return syylk
-	pass
 	
-		
+	
 func _process(delta):
 	ECS.update()
 	
@@ -50,7 +58,7 @@ func _process(delta):
 func _input(event):
 	# Mouse in viewport coordinates.
 	if event is InputEventMouseButton:
-		print("Mouse Click/Unclick at: ", event.position)
+		#print("Mouse Click/Unclick at: ", event.position)
 		if event.button_index == 1:
 			var e = getEntityAtPosition(event.position)
 			if e:

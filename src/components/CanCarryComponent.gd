@@ -1,0 +1,4 @@
+extends Component
+
+var carrying = {}
+
