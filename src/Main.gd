@@ -8,6 +8,7 @@ var screen_size
 func _ready():
 	create_units()
 	screen_size = get_viewport().size
+	append_to_log("Ready!")
 	
 	
 func create_units():
@@ -103,3 +104,10 @@ func select_unit_by_entity(e):
 		var c = ECS.entity_get_component(selected_unit.id, "hasvoicecomponent")
 		c.to_play = 1 # todo - enum
 	pass
+
+
+func append_to_log(text : String):
+	var l = get_node("HUD/GameLog")
+	l.append(text)
+	pass
+
