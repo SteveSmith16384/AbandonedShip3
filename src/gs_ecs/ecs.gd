@@ -242,7 +242,7 @@ func has_component(component_name):
 
 # returns true if entity already exists
 func has_entity(entity_id):
-	Logger.trace("[ECS] has_entity")
+	#Logger.trace("[ECS] has_entity")
 	if entities.has(entity_id):
 		return true
 

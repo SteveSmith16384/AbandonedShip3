@@ -31,3 +31,4 @@ texture = ExtResource( 1 )
 
 [node name="IsUnitComponent" parent="Components" instance=ExtResource( 5 )]
 side = 2
+unit_name = "Kryxix"

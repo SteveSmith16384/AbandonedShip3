@@ -8,7 +8,7 @@ func on_process_entity(entity : Entity, delta: float):
 	var space_state = Physics2DServer.space_get_direct_state(space_rid)
 
 	var cbs = ECS.entity_get_component(entity.id, "isunitcomponent")
-	if cbs.next_shot_time > OS.get_unix_time():
+	if cbs.is_alive == false or cbs.next_shot_time > OS.get_unix_time():
 		return
 		
 	if cbs.current_target != null:
@@ -54,8 +54,8 @@ func shoot_at(shooter, target):
 	ECS.remove_entity(target)
 
 	var main = get_tree().get_root().get_node("Main")
-	main.append_to_log(tcbs.unit_name + " killed")
-	
+	#main.append_to_log(tcbs.unit_name + " killed")
+	main.entity_killed(target, tcbs)
 	pass
 
 

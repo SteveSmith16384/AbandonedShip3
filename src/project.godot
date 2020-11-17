@@ -71,6 +71,7 @@ config/icon="res://icon.png"
 Logger="*res://Logger.gd"
 ECS="*res://gs_ecs/ecs.gd"
 Settings="*res://Settings.gd"
+Globals="*res://Globals.gd"
 
 [input]
 

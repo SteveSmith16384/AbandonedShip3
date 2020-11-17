@@ -34,7 +34,10 @@ func create_unit(name, start_pos):
 	var syylk_img = load("res://assets/sprites/" + name + ".png")
 	syylk.get_node("Sprite").set_texture(syylk_img)
 	
-	#  Add icon
+	var scbs = ECS.entity_get_component(syylk.id, "isunitcomponent")
+	scbs.unit_name = name
+	
+	#  Add button icon
 	var b = load("res://gui/UnitSelectorButton.tscn")
 	var button = b.instance()
 	button.unit = syylk
@@ -44,6 +47,13 @@ func create_unit(name, start_pos):
 	node.add_child(button)
 	
 	units[name] = syylk
+	
+	# Give the units a destination so they space out
+	#var c = ECS.entity_get_component(syylk.id, "destinationcomponent")
+	#c.destination = syylk.position
+	#c.destination.y += 10
+	#c.has_destination = true
+
 	return syylk
 	
 	
@@ -110,4 +120,13 @@ func append_to_log(text : String):
 	var l = get_node("HUD/GameLog")
 	l.append(text)
 	pass
+
+
+func entity_killed(e, iuc):
+	append_to_log(iuc.unit_name + " killed")
+	if units.has(iuc.unit_name):
+		units.erase(iuc.unit_name)
+		if selected_unit == e:
+			selected_unit = null
+		# todo - hide button?
 
