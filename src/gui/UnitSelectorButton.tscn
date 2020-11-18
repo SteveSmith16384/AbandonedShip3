@@ -3,20 +3,25 @@
 [ext_resource path="res://gui/UnitSelectorButton.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
-[node name="UnitSelectorButton" type="Button"]
+[node name="UnitSelectorButton" type="VBoxContainer"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
 margin_right = 109.0
 margin_bottom = 70.0
-rect_scale = Vector2( 1.73694, 0.801712 )
+size_flags_stretch_ratio = 5.0
 text = "Todo"
 icon = ExtResource( 2 )
-script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
-[connection signal="button_down" from="." to="." method="_on_UnitSelectorButton_button_down"]
-[connection signal="draw" from="." to="." method="_on_UnitSelectorButton_draw"]
-[connection signal="pressed" from="." to="." method="_on_UnitSelectorButton_pressed"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="button_down" from="Button" to="Button" method="_on_UnitSelectorButton_button_down"]
+[connection signal="draw" from="Button" to="Button" method="_on_UnitSelectorButton_draw"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="timeout" from="Timer" to="Button" method="_on_Timer_timeout"]

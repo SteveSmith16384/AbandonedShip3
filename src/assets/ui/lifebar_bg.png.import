@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/middle_deck.png-8b4fe10cc8a09860d2602ecc1bdd0741.stex"
+path="res://.import/lifebar_bg.png-e89c7b349eb23decc32147159628660b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/middle_deck.png"
-dest_files=[ "res://.import/middle_deck.png-8b4fe10cc8a09860d2602ecc1bdd0741.stex" ]
+source_file="res://assets/ui/lifebar_bg.png"
+dest_files=[ "res://.import/lifebar_bg.png-e89c7b349eb23decc32147159628660b.stex" ]
 
 [params]
 

@@ -39,12 +39,13 @@ func create_unit(name, start_pos):
 	
 	#  Add button icon
 	var b = load("res://gui/UnitSelectorButton.tscn")
-	var button = b.instance()
-	button.unit = syylk
+	var usb = b.instance()
+	var button = usb.find_node("Button")
+	usb.unit = syylk
 	button.text = name
 	button.icon = syylk_img
-	var node = get_node("HUD/UnitSelector/MarginContainer/VBoxContainer")
-	node.add_child(button)
+	var node = get_node("HUD/UnitSelector/MarginContainer/UnitButtonContainer")
+	node.add_child(usb)
 	
 	units[name] = syylk
 	
@@ -66,7 +67,7 @@ func _process(delta):
 	pass
 	
 	
-func _input(event):
+func _unhandled_input(event):
 	# Mouse in viewport coordinates.
 	if event is InputEventMouseButton:
 		#print("Mouse Click/Unclick at: ", event.position)

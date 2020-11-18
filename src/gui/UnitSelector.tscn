@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://gui/UnitSelector.gd" type="Script" id=7]
+
+[node name="UnitSelector" type="CanvasLayer"]
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -40.0818 ]
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 0.19
+anchor_bottom = 0.214
+margin_right = -85.56
+margin_bottom = 17.6
+rect_scale = Vector2( 1.56, 1.24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UnitButtonContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_right = 109.0
+margin_bottom = 146.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -48,6 +48,11 @@ _global_script_classes=[ {
 "class": "System",
 "language": "GDScript",
 "path": "res://gs_ecs/system.gd"
+}, {
+"base": "VBoxContainer",
+"class": "UnitSelectorButton",
+"language": "GDScript",
+"path": "res://gui/UnitSelectorButton.gd"
 } ]
 _global_script_class_icons={
 "CanMoveComponent": "",
@@ -57,7 +62,8 @@ _global_script_class_icons={
 "Group": "",
 "SelectableComponent": "",
 "ShootingSystem": "",
-"System": ""
+"System": "",
+"UnitSelectorButton": ""
 }
 
 [application]
