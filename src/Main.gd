@@ -18,11 +18,11 @@ func create_units():
 	var start_pos = get_node("StartLocation")
 	
 	var syylk = create_unit("zark", start_pos)
-	create_unit("syylk", start_pos)
-	create_unit("sevrina", start_pos)
-	create_unit("torik", start_pos)
-	create_unit("manto", start_pos)
-	create_unit("maul", start_pos)
+	#create_unit("syylk", start_pos)
+	#create_unit("sevrina", start_pos)
+	#create_unit("torik", start_pos)
+	#create_unit("manto", start_pos)
+	#create_unit("maul", start_pos)
 	
 	selected_unit = syylk
 	pass

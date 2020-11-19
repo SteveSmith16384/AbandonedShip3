@@ -12,7 +12,8 @@ func on_process_entity(entity : Entity, delta: float):
 		
 	var item = cbs.current_item
 	var iseq = ECS.entity_get_component(item.id, "isequipmentcomponent")
-	
+	if iseq.can_shoot == false:
+		return
 		
 	var main = get_tree().get_root().get_node("Main")
 	var space_rid = main.get_world_2d().space
@@ -20,8 +21,9 @@ func on_process_entity(entity : Entity, delta: float):
 
 	if cbs.current_target != null:
 		if is_valid_target(entity, cbs.current_target, main, space_state):
-			shoot_at(entity, cbs.current_target)
-			cbs.next_shot_time = OS.get_unix_time() + 2000
+			main.append_to_log(cbs.unit_name + " is shooting")
+			shoot_at(entity, cbs.current_target, iseq)
+			cbs.next_shot_time = OS.get_unix_time() + Settings.SHOT_INTERVAL_SECS
 		else:
 			cbs.current_target = null
 	else:
@@ -53,16 +55,12 @@ func is_valid_target(shooter, target, main, space_state):
 	# todo - check distance?
 
 
-func shoot_at(shooter, target):
+func shoot_at(shooter, target, eqc):
 	var scbs = ECS.entity_get_component(shooter.id, "isunitcomponent")
 	var tcbs = ECS.entity_get_component(target.id, "isunitcomponent")
-
-	tcbs.is_alive = false
-	ECS.remove_entity(target)
-
-	var main = get_tree().get_root().get_node("Main")
-	#main.append_to_log(tcbs.unit_name + " killed")
-	main.entity_killed(target, tcbs)
+	
+	var damage = eqc.shot_power
+	tcbs.damage_this_loop = damage
 	pass
 
 

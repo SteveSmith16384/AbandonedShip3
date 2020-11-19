@@ -14,3 +14,5 @@ var current_item
 var current_target
 var next_shot_time : float
 var is_alive : bool = true
+
+var damage_this_loop : float
