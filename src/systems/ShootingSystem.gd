@@ -3,14 +3,21 @@ extends System
 
 # todo - only check every so often
 func on_process_entity(entity : Entity, delta: float):
-	var main = get_tree().get_root().get_node("Main")
-	var space_rid = main.get_world_2d().space
-	var space_state = Physics2DServer.space_get_direct_state(space_rid)
-
 	var cbs = ECS.entity_get_component(entity.id, "isunitcomponent")
 	if cbs.is_alive == false or cbs.next_shot_time > OS.get_unix_time():
 		return
 		
+	if cbs.current_item == null:
+		return
+		
+	var item = cbs.current_item
+	var iseq = ECS.entity_get_component(item.id, "isequipmentcomponent")
+	
+		
+	var main = get_tree().get_root().get_node("Main")
+	var space_rid = main.get_world_2d().space
+	var space_state = Physics2DServer.space_get_direct_state(space_rid)
+
 	if cbs.current_target != null:
 		if is_valid_target(entity, cbs.current_target, main, space_state):
 			shoot_at(entity, cbs.current_target)

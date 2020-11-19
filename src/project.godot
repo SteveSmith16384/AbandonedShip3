@@ -35,6 +35,16 @@ _global_script_classes=[ {
 "path": "res://gs_ecs/group.gd"
 }, {
 "base": "Component",
+"class": "IsUnitComponent",
+"language": "GDScript",
+"path": "res://components/isUnitComponent.gd"
+}, {
+"base": "Entity",
+"class": "Pistol",
+"language": "GDScript",
+"path": "res://equipment/Pistol.gd"
+}, {
+"base": "Component",
 "class": "SelectableComponent",
 "language": "GDScript",
 "path": "res://components/SelectableComponent.gd"
@@ -60,6 +70,8 @@ _global_script_class_icons={
 "Entity": "",
 "FogOfWarSystem": "",
 "Group": "",
+"IsUnitComponent": "",
+"Pistol": "",
 "SelectableComponent": "",
 "ShootingSystem": "",
 "System": "",

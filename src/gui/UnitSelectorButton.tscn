@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://gui/UnitSelectorButton.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="Theme" id=1]
 
 [node name="UnitSelectorButton" type="VBoxContainer"]
 script = ExtResource( 1 )
@@ -12,7 +14,7 @@ __meta__ = {
 [node name="Button" type="Button" parent="."]
 margin_right = 109.0
 margin_bottom = 70.0
-size_flags_stretch_ratio = 5.0
+theme = SubResource( 1 )
 text = "Todo"
 icon = ExtResource( 2 )
 __meta__ = {
@@ -21,6 +23,14 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+margin_top = 74.0
+margin_right = 109.0
+margin_bottom = 88.0
+size_flags_stretch_ratio = 10.0
+step = 1.0
+value = 50.0
 [connection signal="button_down" from="Button" to="Button" method="_on_UnitSelectorButton_button_down"]
 [connection signal="draw" from="Button" to="Button" method="_on_UnitSelectorButton_draw"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

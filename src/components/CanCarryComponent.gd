@@ -1,4 +1,4 @@
 extends Component
 
-var carrying = {}
+var carrying = [] # entities list
 

@@ -3,9 +3,12 @@ extends Node
 var selected_unit : Entity
 var units = {}
 var screen_size
-
+var entity_factory
 
 func _ready():
+	var ef = load("res://EntityFactory.tscn")
+	entity_factory = ef.instance()
+
 	create_units()
 	screen_size = get_viewport().size
 	append_to_log("Ready!")
@@ -26,17 +29,9 @@ func create_units():
 	
 
 func create_unit(name, start_pos):
-	var unit = load("res://entities/UnitEntity.tscn")
-	
-	var syylk = unit.instance()
-	add_child(syylk)
-	syylk.position = start_pos.position
 	var syylk_img = load("res://assets/sprites/" + name + ".png")
-	syylk.get_node("Sprite").set_texture(syylk_img)
-	
-	var scbs = ECS.entity_get_component(syylk.id, "isunitcomponent")
-	scbs.unit_name = name
-	
+	var syylk = entity_factory.create_unit(self, name, start_pos.position)
+
 	#  Add button icon
 	var b = load("res://gui/UnitSelectorButton.tscn")
 	var usb = b.instance()
@@ -102,18 +97,22 @@ func setDestination(position : Vector2):
 	# Do voice
 	if ECS.entity_has_component(selected_unit.id, "hasvoicecomponent"):
 		var hv = ECS.entity_get_component(selected_unit.id, "hasvoicecomponent")
-		hv.to_play = 2 # todo - enum
-	
+		hv.to_play = Globals.SPEECH_OK
+		append_to_log("Destination selected")
 
-func select_unit_by_name(name):
+
+func select_unit_by_name(name : String):
 	select_unit_by_entity(units[name])
 	
 	
 func select_unit_by_entity(e):
 	selected_unit = e
-	if ECS.entity_has_component(selected_unit.id, "hasvoicecomponent"):
-		var c = ECS.entity_get_component(selected_unit.id, "hasvoicecomponent")
-		c.to_play = 1 # todo - enum
+	if e != null:
+		if ECS.entity_has_component(selected_unit.id, "hasvoicecomponent"):
+			var hvc = ECS.entity_get_component(selected_unit.id, "hasvoicecomponent")
+			hvc.to_play = Globals.SPEECH_READY
+		var scbs = ECS.entity_get_component(e.id, "isunitcomponent")
+		append_to_log(scbs.unit_name + " selected")
 	pass
 
 
