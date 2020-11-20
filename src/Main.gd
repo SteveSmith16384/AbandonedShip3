@@ -15,32 +15,41 @@ func _ready():
 	
 	
 func create_units():
-	var start_pos = get_node("StartLocation")
+	var start_pos = null
+	for child in get_node("StartPositions").get_children():
+		if child is Node2D:
+			if child.type == 0:
+				start_pos = child.position
+				break
+#	var start_pos = get_node("StartLocation")
 	
 	var syylk = create_unit("zark", start_pos)
-	#create_unit("syylk", start_pos)
-	#create_unit("sevrina", start_pos)
-	#create_unit("torik", start_pos)
-	#create_unit("manto", start_pos)
-	#create_unit("maul", start_pos)
+	create_unit("syylk", start_pos)
+	create_unit("sevrina", start_pos)
+	create_unit("torik", start_pos)
+	create_unit("manto", start_pos)
+	create_unit("maul", start_pos)
 	
 	selected_unit = syylk
 	pass
 	
 
-func create_unit(name, start_pos):
+func create_unit(name, start_pos : Vector2):
 	var syylk_img = load("res://assets/sprites/" + name + ".png")
-	var syylk = entity_factory.create_unit(self, name, start_pos.position)
+	var syylk = entity_factory.create_unit(self, name, start_pos)
 
 	#  Add button icon
 	var b = load("res://gui/UnitSelectorButton.tscn")
 	var usb = b.instance()
-	var button = usb.find_node("Button")
 	usb.unit = syylk
+	var button = usb.find_node("Button")
 	button.text = name
 	button.icon = syylk_img
 	var node = get_node("HUD/UnitSelector/MarginContainer/UnitButtonContainer")
 	node.add_child(usb)
+
+	var iuc = ECS.entity_get_component(syylk.id, "isunitcomponent")
+	iuc.unit_selector_button = usb
 	
 	units[name] = syylk
 	
@@ -122,8 +131,15 @@ func append_to_log(text : String):
 	pass
 
 
+func set_unit_health(entity, health):
+	var iuc = ECS.get_entity_component(entity, "isunitcomponent")
+	var usb = iuc.unit_selector_button
+	var bar = usb.find_child("HealthBar")
+	bar.value = health
+	pass
+	
+	
 func entity_killed(e, iuc):
-	append_to_log(iuc.unit_name + " killed")
 	if units.has(iuc.unit_name):
 		units.erase(iuc.unit_name)
 		if selected_unit == e:

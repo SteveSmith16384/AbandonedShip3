@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://systems/SelectUnitSystem.tscn" type="PackedScene" id=1]
-[ext_resource path="res://StartLocation.tscn" type="PackedScene" id=2]
+[ext_resource path="res://StartPosition.tscn" type="PackedScene" id=2]
 [ext_resource path="res://systems/MoveToDestinationSystem.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Main.gd" type="Script" id=4]
 [ext_resource path="res://entities/ShadowfireMapEntity.tscn" type="PackedScene" id=5]
@@ -11,7 +11,6 @@
 [ext_resource path="res://systems/FogOfWarSystem.tscn" type="PackedScene" id=9]
 [ext_resource path="res://systems/ShootingSystem.tscn" type="PackedScene" id=10]
 [ext_resource path="res://systems/VoiceSystem.tscn" type="PackedScene" id=11]
-[ext_resource path="res://entities/EnemyEntity.tscn" type="PackedScene" id=12]
 [ext_resource path="res://systems/UnitDamageSystem.tscn" type="PackedScene" id=13]
 
 [node name="Main" type="Node2D"]
@@ -39,12 +38,6 @@ current = true
 [node name="ShadowfireMapEntity" parent="Entities" instance=ExtResource( 5 )]
 z_index = -1
 
-[node name="EnemyEntity" parent="Entities" instance=ExtResource( 12 )]
-position = Vector2( 794.788, 1497.65 )
-
-[node name="StartLocation" parent="." instance=ExtResource( 2 )]
-position = Vector2( 778, 1264 )
-
 [node name="HUD" type="Node2D" parent="."]
 
 [node name="GameLog" parent="HUD" instance=ExtResource( 8 )]
@@ -52,3 +45,12 @@ position = Vector2( 778, 1264 )
 [node name="CommandSelector" parent="HUD" instance=ExtResource( 7 )]
 
 [node name="UnitSelector" parent="HUD" instance=ExtResource( 6 )]
+
+[node name="StartPositions" type="Node" parent="."]
+
+[node name="PlayerStartPosition" parent="StartPositions" instance=ExtResource( 2 )]
+position = Vector2( 778, 1264 )
+
+[node name="EnemyStartPosition" parent="StartPositions" instance=ExtResource( 2 )]
+position = Vector2( 798.851, 1485.02 )
+type = 1
