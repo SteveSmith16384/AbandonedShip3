@@ -184,10 +184,10 @@ func entity_add_component(entity, component):
 
 
 # returns a component for an entity
-func entity_get_component(entity_id, component_name):
-#	Logger.trace("[ECS] entity_get_component")
+func entity_get_component(entity, component_name):
+	Logger.trace("[ECS] entity_get_component")
 	if (component_entities.has(component_name)):
-		return component_entities[component_name][entity_id]
+		return component_entities[component_name][entity.id]
 
 
 # returns true if the entity has the component

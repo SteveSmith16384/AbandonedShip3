@@ -1,7 +1,7 @@
 extends System
 
 func on_process_entity(entity : Entity, delta: float):
-	var c = ECS.entity_get_component(entity.id, "hasvoicecomponent")
+	var c = ECS.entity_get_component(entity, "hasvoicecomponent")
 	if c.to_play > 0:
 		var sfx
 		match c.to_play:

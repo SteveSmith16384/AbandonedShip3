@@ -3,15 +3,18 @@ extends System
 
 # todo - only check every so often
 func on_process_entity(entity : Entity, delta: float):
-	var cbs = ECS.entity_get_component(entity.id, "isunitcomponent")
-	if cbs.is_alive == false or cbs.next_shot_time > OS.get_unix_time():
+	var cbs = ECS.entity_get_component(entity, "isunitcomponent")
+	if cbs.is_alive == false:
+		return
+
+	if cbs.next_shot_time > OS.get_unix_time():
 		return
 		
 	if cbs.current_item == null:
 		return
 		
 	var item = cbs.current_item
-	var iseq = ECS.entity_get_component(item.id, "isequipmentcomponent")
+	var iseq = ECS.entity_get_component(item, "isequipmentcomponent")
 	if iseq.can_shoot == false:
 		return
 		
@@ -45,8 +48,8 @@ func is_valid_target(shooter, target, main, space_state):
 	if shooter == target:
 		return false
 		
-	var scbs = ECS.entity_get_component(shooter.id, "isunitcomponent")
-	var tcbs = ECS.entity_get_component(target.id, "isunitcomponent")
+	var scbs = ECS.entity_get_component(shooter, "isunitcomponent")
+	var tcbs = ECS.entity_get_component(target, "isunitcomponent")
 	if scbs.side == tcbs.side or tcbs.is_alive == false:
 		return false
 		
@@ -56,8 +59,8 @@ func is_valid_target(shooter, target, main, space_state):
 
 
 func shoot_at(shooter, target, eqc):
-	var scbs = ECS.entity_get_component(shooter.id, "isunitcomponent")
-	var tcbs = ECS.entity_get_component(target.id, "isunitcomponent")
+	var scbs = ECS.entity_get_component(shooter, "isunitcomponent")
+	var tcbs = ECS.entity_get_component(target, "isunitcomponent")
 	
 	var damage = eqc.shot_power
 	tcbs.damage_this_loop = damage

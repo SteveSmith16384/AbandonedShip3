@@ -1,7 +1,7 @@
 extends System
 
 func on_process_entity(entity : Entity, delta: float):
-	var cbs = ECS.entity_get_component(entity.id, "isunitcomponent")
+	var cbs = ECS.entity_get_component(entity, "isunitcomponent")
 	if cbs.is_alive == false:
 		return
 	

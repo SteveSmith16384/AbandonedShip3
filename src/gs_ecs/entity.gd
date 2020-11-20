@@ -45,11 +45,11 @@ func add_component(component):
 	ECS.entity_add_component(self, component)
 
 func get_component(component_name):
-	return ECS.entity_get_component(self.id, component_name)
+	return ECS.entity_get_component(self, component_name)
 
 #
 func has_component(component_name):
-	return ECS.entity_has_component(self.id, component_name)
+	return ECS.entity_has_component(self, component_name)
 
 
 func remove_component(component_name):

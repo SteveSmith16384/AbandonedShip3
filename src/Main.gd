@@ -9,12 +9,13 @@ func _ready():
 	var ef = load("res://EntityFactory.tscn")
 	entity_factory = ef.instance()
 
-	create_units()
+	create_player_units()
+	create_enemy_units()
 	screen_size = get_viewport().size
 	append_to_log("Ready!")
 	
 	
-func create_units():
+func create_player_units():
 	var start_pos = null
 	for child in get_node("StartPositions").get_children():
 		if child is Node2D:
@@ -23,20 +24,20 @@ func create_units():
 				break
 #	var start_pos = get_node("StartLocation")
 	
-	var syylk = create_unit("zark", start_pos)
-	create_unit("syylk", start_pos)
-	create_unit("sevrina", start_pos)
-	create_unit("torik", start_pos)
-	create_unit("manto", start_pos)
-	create_unit("maul", start_pos)
+	var syylk = create_player_unit("zark", start_pos)
+	#create_player_unit("syylk", start_pos)
+	#create_player_unit("sevrina", start_pos)
+	#create_player_unit("torik", start_pos)
+	#create_player_unit("manto", start_pos)
+	#create_player_unit("maul", start_pos)
 	
 	selected_unit = syylk
 	pass
 	
 
-func create_unit(name, start_pos : Vector2):
+func create_player_unit(name, start_pos : Vector2):
 	var syylk_img = load("res://assets/sprites/" + name + ".png")
-	var syylk = entity_factory.create_unit(self, name, start_pos)
+	var syylk = entity_factory.create_player_unit(self, name, start_pos)
 
 	#  Add button icon
 	var b = load("res://gui/UnitSelectorButton.tscn")
@@ -48,20 +49,26 @@ func create_unit(name, start_pos : Vector2):
 	var node = get_node("HUD/UnitSelector/MarginContainer/UnitButtonContainer")
 	node.add_child(usb)
 
-	var iuc = ECS.entity_get_component(syylk.id, "isunitcomponent")
+	var iuc = ECS.entity_get_component(syylk, "isunitcomponent")
 	iuc.unit_selector_button = usb
+	
+	set_unit_health(syylk, iuc.health)
 	
 	units[name] = syylk
 	
-	# Give the units a destination so they space out
-	#var c = ECS.entity_get_component(syylk.id, "destinationcomponent")
-	#c.destination = syylk.position
-	#c.destination.y += 10
-	#c.has_destination = true
-
 	return syylk
 	
 	
+func create_enemy_units():
+	for child in get_node("StartPositions").get_children():
+		if child is Node2D:
+			if child.type == 1: # enemy position
+				var start_pos = child.position
+				var name = "kryxix" # todo
+				var syylk_img = load("res://assets/sprites/" + name + ".png")
+				var syylk = entity_factory.create_enemy_unit(self, name, start_pos)
+
+
 func _process(delta):
 	ECS.update()
 	
@@ -99,13 +106,13 @@ func setDestination(position : Vector2):
 	var pos = Vector2(position)
 	pos.x += $Camera2D.position.x - screen_size.x/2
 	pos.y += $Camera2D.position.y - screen_size.y/2
-	var c = ECS.entity_get_component(selected_unit.id, "destinationcomponent")
+	var c = ECS.entity_get_component(selected_unit, "destinationcomponent")
 	c.destination = pos
 	c.has_destination = true
 	
 	# Do voice
 	if ECS.entity_has_component(selected_unit.id, "hasvoicecomponent"):
-		var hv = ECS.entity_get_component(selected_unit.id, "hasvoicecomponent")
+		var hv = ECS.entity_get_component(selected_unit, "hasvoicecomponent")
 		hv.to_play = Globals.SPEECH_OK
 		append_to_log("Destination selected")
 
@@ -118,9 +125,9 @@ func select_unit_by_entity(e):
 	selected_unit = e
 	if e != null:
 		if ECS.entity_has_component(selected_unit.id, "hasvoicecomponent"):
-			var hvc = ECS.entity_get_component(selected_unit.id, "hasvoicecomponent")
+			var hvc = ECS.entity_get_component(selected_unit, "hasvoicecomponent")
 			hvc.to_play = Globals.SPEECH_READY
-		var scbs = ECS.entity_get_component(e.id, "isunitcomponent")
+		var scbs = ECS.entity_get_component(e, "isunitcomponent")
 		append_to_log(scbs.unit_name + " selected")
 	pass
 
@@ -132,10 +139,11 @@ func append_to_log(text : String):
 
 
 func set_unit_health(entity, health):
-	var iuc = ECS.get_entity_component(entity, "isunitcomponent")
+	var iuc = ECS.entity_get_component(entity, "isunitcomponent")
 	var usb = iuc.unit_selector_button
-	var bar = usb.find_child("HealthBar")
-	bar.value = health
+	if usb:
+		var bar = usb.find_node("HealthBar")
+		bar.value = health
 	pass
 	
 	

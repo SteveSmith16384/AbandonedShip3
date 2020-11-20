@@ -6,7 +6,7 @@ extends Component
 export var side : int
 
 export var unit_name : String
-var health : float = 100
+export var health : float = 100
 var unit_selector_button
 
 var current_item
