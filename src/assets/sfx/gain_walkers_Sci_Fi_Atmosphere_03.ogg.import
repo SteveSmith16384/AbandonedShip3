@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/gain_walkers_Sci_Fi_Atmosphere_03.ogg-a55819690f36526449f3f15fcd8dbdfa.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/gain_walkers_Sci_Fi_Atmosphere_03.ogg"
+dest_files=[ "res://.import/gain_walkers_Sci_Fi_Atmosphere_03.ogg-a55819690f36526449f3f15fcd8dbdfa.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -25,11 +25,11 @@ func create_player_units():
 #	var start_pos = get_node("StartLocation")
 	
 	var syylk = create_player_unit("zark", start_pos)
-	#create_player_unit("syylk", start_pos)
-	#create_player_unit("sevrina", start_pos)
-	#create_player_unit("torik", start_pos)
-	#create_player_unit("manto", start_pos)
-	#create_player_unit("maul", start_pos)
+	create_player_unit("syylk", start_pos)
+	create_player_unit("sevrina", start_pos)
+	create_player_unit("torik", start_pos)
+	create_player_unit("manto", start_pos)
+	create_player_unit("maul", start_pos)
 	
 	selected_unit = syylk
 	pass
@@ -80,12 +80,14 @@ func _process(delta):
 	
 func _unhandled_input(event):
 	# Mouse in viewport coordinates.
-	if event is InputEventMouseButton:
-		#print("Mouse Click/Unclick at: ", event.position)
+	if event is InputEventMouseButton && event.pressed:
+		#print("Mouse Click/Unclick at: " , event.pressed)
 		if event.button_index == 1:
 			var e = getEntityAtPosition(event.position)
 			if e:
 				select_unit_by_entity(e)
+			else:
+				append_to_log("Nothing there")
 		elif event.button_index == 2 and selected_unit:
 			setDestination(event.position)
 	pass
@@ -111,7 +113,7 @@ func setDestination(position : Vector2):
 	c.has_destination = true
 	
 	# Do voice
-	if ECS.entity_has_component(selected_unit.id, "hasvoicecomponent"):
+	if ECS.entity_has_component(selected_unit, "hasvoicecomponent"):
 		var hv = ECS.entity_get_component(selected_unit, "hasvoicecomponent")
 		hv.to_play = Globals.SPEECH_OK
 		append_to_log("Destination selected")
@@ -124,7 +126,7 @@ func select_unit_by_name(name : String):
 func select_unit_by_entity(e):
 	selected_unit = e
 	if e != null:
-		if ECS.entity_has_component(selected_unit.id, "hasvoicecomponent"):
+		if ECS.entity_has_component(selected_unit, "hasvoicecomponent"):
 			var hvc = ECS.entity_get_component(selected_unit, "hasvoicecomponent")
 			hvc.to_play = Globals.SPEECH_READY
 		var scbs = ECS.entity_get_component(e, "isunitcomponent")
@@ -153,4 +155,10 @@ func entity_killed(e, iuc):
 		if selected_unit == e:
 			selected_unit = null
 		# todo - hide button?
+
+
+func play_sfx(file : String):
+	var sfx = load("res://assets/sfx/" + file)
+	$AudioStreamPlayer2D.stream = sfx
+	$AudioStreamPlayer2D.play()
 

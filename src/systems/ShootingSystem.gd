@@ -26,6 +26,7 @@ func on_process_entity(entity : Entity, delta: float):
 		if is_valid_target(entity, cbs.current_target, main, space_state):
 			main.append_to_log(cbs.unit_name + " is shooting")
 			shoot_at(entity, cbs.current_target, iseq)
+			main.play_sfx("burst fire_reduced.wav")
 			cbs.next_shot_time = OS.get_unix_time() + Settings.SHOT_INTERVAL_SECS
 		else:
 			cbs.current_target = null

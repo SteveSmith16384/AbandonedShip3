@@ -38,9 +38,9 @@ func on_process(entities, delta):
 func on_process_entity(entity, delta):
 	Logger.trace("[system] on_process_entity")
 	pass
+	
 
 func _ready():
-
 	if COMPONENTS:	components = COMPONENTS
 	if ENABLED:		enabled = ENABLED
 	if AWAKE:		awake = AWAKE
