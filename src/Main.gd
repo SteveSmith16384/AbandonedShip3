@@ -65,8 +65,8 @@ func create_enemy_units():
 			if child.type == 1: # enemy position
 				var start_pos = child.position
 				var name = "kryxix" # todo
-				var syylk_img = load("res://assets/sprites/" + name + ".png")
-				var syylk = entity_factory.create_enemy_unit(self, name, start_pos)
+				#var syylk_img = load("res://assets/sprites/" + name + ".png")
+				entity_factory.create_enemy_unit(self, name, start_pos)
 
 
 func _process(delta):

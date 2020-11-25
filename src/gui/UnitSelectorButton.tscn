@@ -21,9 +21,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-
 [node name="HealthBar" type="ProgressBar" parent="."]
 margin_top = 74.0
 margin_right = 109.0
@@ -31,7 +28,4 @@ margin_bottom = 88.0
 size_flags_stretch_ratio = 10.0
 step = 1.0
 value = 50.0
-[connection signal="button_down" from="Button" to="Button" method="_on_UnitSelectorButton_button_down"]
-[connection signal="draw" from="Button" to="Button" method="_on_UnitSelectorButton_draw"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
-[connection signal="timeout" from="Timer" to="Button" method="_on_Timer_timeout"]

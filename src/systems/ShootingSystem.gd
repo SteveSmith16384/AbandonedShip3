@@ -60,7 +60,7 @@ func is_valid_target(shooter, target, main, space_state):
 
 
 func shoot_at(shooter, target, eqc):
-	var scbs = ECS.entity_get_component(shooter, "isunitcomponent")
+	#var scbs = ECS.entity_get_component(shooter, "isunitcomponent")
 	var tcbs = ECS.entity_get_component(target, "isunitcomponent")
 	
 	var damage = eqc.shot_power

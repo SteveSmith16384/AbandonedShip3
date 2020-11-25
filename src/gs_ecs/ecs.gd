@@ -134,7 +134,7 @@ func add_system(system, components = []):
 		system.on_after_add()
 
 
-func add_group(group, systems = []):
+func add_group(group, new_systems = []):
 	Logger.trace("[ECS] add_group")
 	is_dirty = true
 
@@ -147,7 +147,7 @@ func add_group(group, systems = []):
 	groups[_id] = group
 	group_systems[_id] = []
 
-	for system in systems:
+	for system in new_systems:
 		group_systems[_id].append(system.to_lower().strip_edges())
 
 	Logger.debug("- group %s has been added" % [_id])
@@ -243,27 +243,19 @@ func has_component(component_name):
 # returns true if entity already exists
 func has_entity(entity_id):
 	#Logger.trace("[ECS] has_entity")
-	if entities.has(entity_id):
-		return true
-
-	return false
+	return entities.has(entity_id)
+	
 
 # returns true if the system already exists
 func has_system(system_name):
 	Logger.trace("[ECS] has_system")
-	if systems.has(system_name):
-		return true
-
-	return false
+	return systems.has(system_name)
 
 
 # returns true if the system already exists
 func has_group(group_name):
 	Logger.trace("[ECS] has_group")
-	if groups.has(group_name):
-		return true
-
-	return false
+	return groups.has(group_name)
 
 
 # rebuild system entities
