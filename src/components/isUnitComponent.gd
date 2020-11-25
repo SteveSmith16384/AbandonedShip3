@@ -8,8 +8,9 @@ export var side : int
 export var unit_name : String
 export var health : float = 100
 var unit_selector_button
-
 var current_item
+var carrying = [] # entities list
+var to_pickup
 
 # Shooting
 var current_target

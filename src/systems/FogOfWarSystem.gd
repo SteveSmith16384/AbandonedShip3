@@ -17,17 +17,18 @@ func check_if_visible(enemy):
 	for unit in main.units.values():
 		seen = check_can_see(enemy, unit, main, space_state)
 		if seen:
-			# Stop moving
-			var dc = ECS.entity_get_component(unit, "destinationcomponent")
-			if dc:
-				dc.has_destination = false
+			# Stop moving if an ememy?
+			if ECS.entity_has_component(enemy, "isunitcomponent"): # must be an enemy
+				# Voice
+				if enemy.get_node("Sprite").visible == false:
+					if ECS.entity_has_component(unit, "hasvoicecomponent"):
+						var hvc = ECS.entity_get_component(unit, "hasvoicecomponent")
+						hvc.to_play = Globals.SPEECH_SEEN_ENEMY
+				var dc = ECS.entity_get_component(unit, "destinationcomponent")
+				if dc:
+					dc.has_destination = false
 				
-			# Voice
-			if enemy.get_node("Sprite").visible == false:
-				if ECS.entity_has_component(unit, "hasvoicecomponent"):
-					var hvc = ECS.entity_get_component(unit, "hasvoicecomponent")
-					hvc.to_play = Globals.SPEECH_SEEN_ENEMY
-				enemy.get_node("Sprite").visible = true
+			enemy.get_node("Sprite").visible = true
 			break;
 	
 	if not seen:

@@ -6,5 +6,5 @@ script/source = "extends Component
 
 "
 
-[node name="CanCarryComponent" type="Node"]
+[node name="CanBeCarriedComponent" type="Node"]
 script = SubResource( 1 )

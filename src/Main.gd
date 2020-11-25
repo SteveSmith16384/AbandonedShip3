@@ -2,8 +2,9 @@ extends Node
 
 var selected_unit : Entity
 var units = {}
-var screen_size
+var screen_size : Vector2
 var entity_factory
+var current_command : int
 
 func _ready():
 	var ef = load("res://EntityFactory.tscn")
@@ -67,7 +68,8 @@ func create_enemy_units():
 				var name = "kryxix" # todo
 				#var syylk_img = load("res://assets/sprites/" + name + ".png")
 				entity_factory.create_enemy_unit(self, name, start_pos)
-
+	pass
+	
 
 func _process(delta):
 	ECS.update()
@@ -85,11 +87,15 @@ func _unhandled_input(event):
 		if event.button_index == 1:
 			var e = getEntityAtPosition(event.position)
 			if e:
-				select_unit_by_entity(e)
+				if ECS.entity_has_component(e, "isunitcomponent"):
+					select_unit_by_entity(e)
+				elif ECS.entity_has_component(e, "isequipmentcomponent"):
+					set_destination(event.position)
+					unit_pickup_entity(e)
 			else:
 				append_to_log("Nothing there")
 		elif event.button_index == 2 and selected_unit:
-			setDestination(event.position)
+			set_destination(event.position)
 	pass
 	
 
@@ -101,10 +107,10 @@ func getEntityAtPosition(position : Vector2):
 	pos.y += $Camera2D.position.y - screen_size.y/2
 	var e = system.get_entity_at(entities, pos)
 	return e
-	pass
 
 
-func setDestination(position : Vector2):
+
+func set_destination(position : Vector2):
 	var pos = Vector2(position)
 	pos.x += $Camera2D.position.x - screen_size.x/2
 	pos.y += $Camera2D.position.y - screen_size.y/2
@@ -119,6 +125,12 @@ func setDestination(position : Vector2):
 		append_to_log("Destination selected")
 
 
+func unit_pickup_entity(entity : Entity):
+	var scbs = ECS.entity_get_component(selected_unit, "isunitcomponent")
+	scbs.to_pickup = entity
+	pass
+	
+	
 func select_unit_by_name(name : String):
 	select_unit_by_entity(units[name])
 	
@@ -135,6 +147,7 @@ func select_unit_by_entity(e):
 
 
 func append_to_log(text : String):
+	print("Appending: " + text)
 	var l = get_node("HUD/GameLog")
 	l.append(text)
 	pass
@@ -155,10 +168,17 @@ func entity_killed(e, iuc):
 		if selected_unit == e:
 			selected_unit = null
 		# todo - hide button?
-
+	pass
+	
 
 func play_sfx(file : String):
 	var sfx = load("res://assets/sfx/" + file)
 	$AudioStreamPlayer2D.stream = sfx
 	$AudioStreamPlayer2D.play()
+	pass
+	
 
+func set_command(cmd : int):
+	current_command = cmd
+	pass
+	

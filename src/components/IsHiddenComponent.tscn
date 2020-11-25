@@ -2,6 +2,5 @@
 
 [ext_resource path="res://components/IsHiddenComponent.gd" type="Script" id=1]
 
-
 [node name="IsHiddenComponent" type="Node"]
 script = ExtResource( 1 )

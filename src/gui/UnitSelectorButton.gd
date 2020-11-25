@@ -1,7 +1,7 @@
 class_name UnitSelectorButton
 extends VBoxContainer
 
-var unit
+var unit # This gets set when the button is created
 
 
 func _on_Button_pressed():
@@ -12,6 +12,5 @@ func _on_Button_pressed():
 
 func getMain():
 	var main = get_tree().get_root().get_node("Main")
-	#var main = load("res://Main.gd")
 	return main
 

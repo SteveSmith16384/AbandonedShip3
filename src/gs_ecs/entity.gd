@@ -9,7 +9,7 @@
 
 	Remarks:
 
-		This Class, has a number of virtual methods as a convenience to
+		This Class has a number of virtual methods as a convenience to
 		the developer using the Framework.
 
 

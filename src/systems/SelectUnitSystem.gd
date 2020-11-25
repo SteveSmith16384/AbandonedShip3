@@ -11,12 +11,10 @@ func get_entity_at(entities, position : Vector2):
 		var area = entity.get_node("CollisionShape2D").get_shape()
 		var entityposition = entity.position
 		var dist = position.distance_to(entityposition)
-		print(dist)
+		#print(dist)
 		if (dist < area.radius):
-			#print("Unit selected")
 			return entity
 	
 	print("NO entity found")
 	return null
-	pass
 	
