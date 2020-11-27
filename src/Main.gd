@@ -122,12 +122,13 @@ func set_destination(position : Vector2):
 	if ECS.entity_has_component(selected_unit, "hasvoicecomponent"):
 		var hv = ECS.entity_get_component(selected_unit, "hasvoicecomponent")
 		hv.to_play = Globals.SPEECH_OK
-		append_to_log("Destination selected")
+	append_to_log("Destination selected")
 
 
 func unit_pickup_entity(entity : Entity):
 	var scbs = ECS.entity_get_component(selected_unit, "isunitcomponent")
 	scbs.to_pickup = entity
+	append_to_log("Unit will pick up " + entity.name)
 	pass
 	
 	

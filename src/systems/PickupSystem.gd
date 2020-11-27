@@ -2,10 +2,6 @@ extends System
 
 # This checks if a unit is in range of the item they want to pick up
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 func on_process_entity(entity : Entity, delta: float):
 	var c = ECS.entity_get_component(entity, "isunitcomponent")
 	if c.to_pickup:
