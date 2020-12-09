@@ -2,20 +2,25 @@ extends System
 
 func on_process_entity(entity : Entity, delta: float):
 	var c = ECS.entity_get_component(entity, "hasvoicecomponent")
-	if c.to_play > 0:
+	if c.to_play.empty() == false:
 		var sfx
-		match c.to_play:
+		var id = c.to_play.pop_front()
+		match id:
 			Globals.SPEECH_READY:
-				sfx = load("res://assets/sfx/voices/sevrina/cduckett-01-ready.wav")
-			Globals.SPEECH_OK:
-				sfx = load("res://assets/sfx/voices/sevrina/cduckett-03-roger.wav")
+				sfx = load("res://assets/sfx/voices/hazel/hazel_ready.wav")
+			Globals.SPEECH_ON_MY_WAY:
+				sfx = load("res://assets/sfx/voices/hazel/hazel_on_my_way.wav")
+			Globals.SPEECH_IVE_ARRIVED:
+				sfx = load("res://assets/sfx/voices/hazel/hazel_im_here.wav")
 			Globals.SPEECH_SEEN_ENEMY:
-				sfx = load("res://assets/sfx/voices/sevrina/cduckett-04-taking_fire.wav")
+				sfx = load("res://assets/sfx/voices/hazel/hazel_something_here.wav")
 			Globals.SPEECH_DIED:
-				sfx = load("res://assets/sfx/voices/sevrina/cduckett-05-scream.wav")
-
+				sfx = load("res://assets/sfx/voices/hazel/cduckett-05-scream.wav")
+			_:
+				print("No such voice: " + str(id))
+				
 		$AudioStreamPlayer2D.stream = sfx
 		$AudioStreamPlayer2D.play()
-		c.to_play = 0
+		#c.to_play = 0
 	pass
 	

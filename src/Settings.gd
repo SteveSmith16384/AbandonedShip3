@@ -1,3 +1,3 @@
 extends Node
 
-var SHOT_INTERVAL_SECS = 2
+const SHOT_INTERVAL_SECS : int = 2

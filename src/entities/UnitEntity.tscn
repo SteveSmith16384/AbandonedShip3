@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://entities/UnitEntity.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/greenblip.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://components/DestinationComponent.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/CanMoveComponent.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/HasVoiceComponent.tscn" type="PackedScene" id=6]
+[ext_resource path="res://components/IsBlipComponent.tscn" type="PackedScene" id=7]
 [ext_resource path="res://components/isUnitComponent.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -33,6 +34,8 @@ shape = SubResource( 1 )
 [node name="CanMoveComponent" parent="Components" instance=ExtResource( 5 )]
 
 [node name="HasVoiceComponent" parent="Components" instance=ExtResource( 6 )]
+
+[node name="IsBlipComponent" parent="Components" instance=ExtResource( 7 )]
 
 [node name="IsUnitComponent" parent="Components" instance=ExtResource( 8 )]
 side = 1

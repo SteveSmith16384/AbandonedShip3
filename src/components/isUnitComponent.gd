@@ -8,7 +8,7 @@ export var side : int
 export var unit_name : String
 export var health : float = 100
 var unit_selector_button
-var current_item
+var current_item : Entity
 var carrying = [] # entities list
 var to_pickup
 

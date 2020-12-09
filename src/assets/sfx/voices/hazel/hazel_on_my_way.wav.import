@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hazel_on_my_way.wav-44d3fa8ac2a14755fee75ad5db2b5da3.sample"
+
+[deps]
+
+source_file="res://assets/sfx/voices/hazel/hazel_on_my_way.wav"
+dest_files=[ "res://.import/hazel_on_my_way.wav-44d3fa8ac2a14755fee75ad5db2b5da3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

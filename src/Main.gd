@@ -1,3 +1,4 @@
+class_name Main
 extends Node
 
 var selected_unit : Entity
@@ -23,7 +24,6 @@ func create_player_units():
 			if child.type == 0:
 				start_pos = child.position
 				break
-#	var start_pos = get_node("StartLocation")
 	
 	var syylk = create_player_unit("zark", start_pos)
 	create_player_unit("syylk", start_pos)
@@ -121,7 +121,7 @@ func set_destination(position : Vector2):
 	# Do voice
 	if ECS.entity_has_component(selected_unit, "hasvoicecomponent"):
 		var hv = ECS.entity_get_component(selected_unit, "hasvoicecomponent")
-		hv.to_play = Globals.SPEECH_OK
+		hv.to_play.push_back(Globals.SPEECH_ON_MY_WAY)
 	append_to_log("Destination selected")
 
 
@@ -140,8 +140,8 @@ func select_unit_by_entity(e):
 	selected_unit = e
 	if e != null:
 		if ECS.entity_has_component(selected_unit, "hasvoicecomponent"):
-			var hvc = ECS.entity_get_component(selected_unit, "hasvoicecomponent")
-			hvc.to_play = Globals.SPEECH_READY
+			var hvc : HasVoiceComponent = ECS.entity_get_component(selected_unit, "hasvoicecomponent")
+			hvc.to_play.push_back(Globals.SPEECH_READY)
 		var scbs = ECS.entity_get_component(e, "isunitcomponent")
 		append_to_log(scbs.unit_name + " selected")
 	pass

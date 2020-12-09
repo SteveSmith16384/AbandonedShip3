@@ -7,7 +7,15 @@ func on_process_entity(entity : Entity, delta: float):
 	if cbs.is_alive == false:
 		return
 
+	if cbs.current_item == null:
+		return
+	var eq = ECS.entity_get_component(cbs.current_item, "isEquipmentComponent")
+	if eq.can_shoot == false:
+		return
+	
 	if cbs.next_shot_time > OS.get_unix_time():
+		var diff = cbs.next_shot_time - OS.get_unix_time()
+		print("Diff: " + str(diff))
 		return
 		
 	if cbs.current_item == null:

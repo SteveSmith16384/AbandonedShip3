@@ -1,7 +1,7 @@
 extends Node
 
 
-func create_player_unit(main, name: String, position):
+func create_player_unit(main : Main, name: String, position : Vector2):
 	var unit = load("res://entities/UnitEntity.tscn")
 	
 	var syylk = unit.instance()
@@ -9,22 +9,23 @@ func create_player_unit(main, name: String, position):
 	syylk.position = position
 	var blip = load("res://assets/sprites/greenblip.png")
 	syylk.get_node("Sprite").set_texture(blip)
-	
-	var g = load("res://equipment/Pistol.tscn")
-	var gun = g.instance()
-	main.add_child(gun)
+
+	# Re-add to give a gun
+	#var g = load("res://equipment/Pistol.tscn")
+	#var gun = g.instance()
+	#main.add_child(gun)
 
 	var scbs = ECS.entity_get_component(syylk, "isunitcomponent")
 	scbs.unit_name = name
-	scbs.current_item = gun
+	#scbs.current_item = gun
 	
-	var eq = ECS.entity_get_component(syylk, "cancarrycomponent")
-	eq.carrying.append(gun)
+	#var eq = ECS.entity_get_component(syylk, "cancarrycomponent")
+	#eq.carrying.append(gun)
 	
 	return syylk
 
 
-func create_enemy_unit(main, name: String, position):
+func create_enemy_unit(main : Main, name: String, position : Vector2):
 	var unit = load("res://entities/EnemyEntity.tscn")
 	
 	var syylk = unit.instance()
@@ -33,13 +34,13 @@ func create_enemy_unit(main, name: String, position):
 	var syylk_img = load("res://assets/sprites/" + name + ".png")
 	syylk.get_node("Sprite").set_texture(syylk_img)
 	
-	var g = load("res://equipment/Pistol.tscn")
-	var gun = g.instance()
-	main.add_child(gun)
+	#var g = load("res://equipment/Pistol.tscn")
+	#var gun = g.instance()
+	#main.add_child(gun)
 
 	var scbs = ECS.entity_get_component(syylk, "isunitcomponent")
 	scbs.unit_name = name
-	scbs.current_item = gun
+	#scbs.current_item = gun
 	
 	#var eq = ECS.entity_get_component(syylk, "cancarrycomponent")
 	#eq.carrying.append(gun)

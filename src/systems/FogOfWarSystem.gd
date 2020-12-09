@@ -23,7 +23,7 @@ func check_if_visible(enemy):
 				if enemy.get_node("Sprite").visible == false:
 					if ECS.entity_has_component(unit, "hasvoicecomponent"):
 						var hvc = ECS.entity_get_component(unit, "hasvoicecomponent")
-						hvc.to_play = Globals.SPEECH_SEEN_ENEMY
+						hvc.to_play.push_back(Globals.SPEECH_SEEN_ENEMY)
 				var dc = ECS.entity_get_component(unit, "destinationcomponent")
 				if dc:
 					dc.has_destination = false

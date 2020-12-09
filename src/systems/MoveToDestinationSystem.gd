@@ -13,6 +13,10 @@ func on_process_entity(entity : Entity, delta: float):
 			var main = get_tree().get_root().get_node("Main")
 			main.append_to_log(unit.unit_name + " has arrived")
 
+			if ECS.entity_has_component(entity, "hasvoicecomponent"):
+				var hvc = ECS.entity_get_component(entity, "hasvoicecomponent")
+				hvc.to_play.push_back(Globals.SPEECH_IVE_ARRIVED)
+
 			c.has_destination = false
 	pass
 	
