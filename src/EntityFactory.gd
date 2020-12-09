@@ -7,8 +7,8 @@ func create_player_unit(main, name: String, position):
 	var syylk = unit.instance()
 	main.add_child(syylk)
 	syylk.position = position
-	var syylk_img = load("res://assets/sprites/" + name + ".png")
-	syylk.get_node("Sprite").set_texture(syylk_img)
+	var blip = load("res://assets/sprites/greenblip.png")
+	syylk.get_node("Sprite").set_texture(blip)
 	
 	var g = load("res://equipment/Pistol.tscn")
 	var gun = g.instance()

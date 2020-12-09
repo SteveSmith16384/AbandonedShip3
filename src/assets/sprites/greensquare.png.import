@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/manto.png-857129a613d65c2817a517195676dd07.stex"
+path="res://.import/greensquare.png-cc1f552b8f5a532fa17d7b31331ca8f9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/manto.png"
-dest_files=[ "res://.import/manto.png-857129a613d65c2817a517195676dd07.stex" ]
+source_file="res://assets/sprites/greensquare.png"
+dest_files=[ "res://.import/greensquare.png-cc1f552b8f5a532fa17d7b31331ca8f9.stex" ]
 
 [params]
 

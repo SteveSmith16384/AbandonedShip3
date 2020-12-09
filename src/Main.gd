@@ -11,14 +11,14 @@ func _ready():
 	entity_factory = ef.instance()
 
 	create_player_units()
-	create_enemy_units()
+	#create_enemy_units()
 	screen_size = get_viewport().size
 	append_to_log("Ready!")
 	
 	
 func create_player_units():
 	var start_pos = null
-	for child in get_node("StartPositions").get_children():
+	for child in get_node("Entities/MapEntity/StartPositions").get_children():
 		if child is Node2D:
 			if child.type == 0:
 				start_pos = child.position
@@ -37,10 +37,10 @@ func create_player_units():
 	
 
 func create_player_unit(name, start_pos : Vector2):
-	var syylk_img = load("res://assets/sprites/" + name + ".png")
 	var syylk = entity_factory.create_player_unit(self, name, start_pos)
 
 	#  Add button icon
+	var syylk_img = load("res://assets/sprites/zark.png")
 	var b = load("res://gui/UnitSelectorButton.tscn")
 	var usb = b.instance()
 	usb.unit = syylk
@@ -65,7 +65,7 @@ func create_enemy_units():
 		if child is Node2D:
 			if child.type == 1: # enemy position
 				var start_pos = child.position
-				var name = "kryxix" # todo
+				var name = "alien" # todo
 				#var syylk_img = load("res://assets/sprites/" + name + ".png")
 				entity_factory.create_enemy_unit(self, name, start_pos)
 	pass

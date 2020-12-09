@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/syylk.png-844c74f92747dacdc16705a1f8c45c64.stex"
+path="res://.import/greenblip.png-163a32430eb55abe8e5cb83ead4d330e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/syylk.png"
-dest_files=[ "res://.import/syylk.png-844c74f92747dacdc16705a1f8c45c64.stex" ]
+source_file="res://assets/sprites/greenblip.png"
+dest_files=[ "res://.import/greenblip.png-163a32430eb55abe8e5cb83ead4d330e.stex" ]
 
 [params]
 

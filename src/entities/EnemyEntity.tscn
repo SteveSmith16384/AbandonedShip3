@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/sprites/churl.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/redblip.png" type="Texture" id=1]
 [ext_resource path="res://entities/EnemyEntity.gd" type="Script" id=2]
 [ext_resource path="res://components/IsHiddenComponent.tscn" type="PackedScene" id=3]
 [ext_resource path="res://components/CanMoveComponent.tscn" type="PackedScene" id=4]
