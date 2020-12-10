@@ -5,7 +5,8 @@ func on_process_entity(entity : Entity, delta: float):
 
 	if c.has_destination:
 		if (c.destination - entity.position).length() > 5:
-			var s = ECS.entity_get_component(entity, "canmovecomponent")
+			var s = ECS.entity_get_component(entity, "CanMovecomponent")
+			s.prev_pos = entity.position
 			var velocity = (c.destination - entity.position).normalized() * s.speed
 			var new_velocity = entity.move_and_slide(velocity)
 		else:

@@ -14,6 +14,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://components/CanMoveComponent.gd"
 }, {
+"base": "Area2D",
+"class": "CollidesComponent",
+"language": "GDScript",
+"path": "res://components/CollidesComponent.gd"
+}, {
+"base": "System",
+"class": "CollisionSystem",
+"language": "GDScript",
+"path": "res://systems/CollisionSystem.gd"
+}, {
 "base": "Node",
 "class": "Component",
 "language": "GDScript",
@@ -76,6 +86,8 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "CanMoveComponent": "",
+"CollidesComponent": "",
+"CollisionSystem": "",
 "Component": "",
 "Entity": "",
 "FogOfWarSystem": "",
