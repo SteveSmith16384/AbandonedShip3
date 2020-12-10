@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://systems/SelectUnitSystem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://systems/FlashBlipSystem.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://systems/UnitDamageSystem.tscn" type="PackedScene" id=13]
 [ext_resource path="res://systems/PickupSystem.tscn" type="PackedScene" id=14]
 [ext_resource path="res://systems/CollisionSystem.tscn" type="PackedScene" id=15]
+[ext_resource path="res://systems/DoorSystem.tscn" type="PackedScene" id=16]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 4 )
@@ -23,6 +24,8 @@ script = ExtResource( 4 )
 current = true
 
 [node name="Systems" type="Node" parent="."]
+
+[node name="DoorSystem" parent="Systems" instance=ExtResource( 16 )]
 
 [node name="CollisionSystem" parent="Systems" instance=ExtResource( 15 )]
 

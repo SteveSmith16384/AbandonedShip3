@@ -25,18 +25,26 @@ func collision(mover2, with2, blocks: bool):
 	
 
 func process_collision(mover : Entity, other : Entity, blocks: bool):
+	if ECS.entity_has_component(mover, "harmsunitcomponent"):
+		var main = get_tree().get_root().get_node("Main")
+		main.unit_harmed(other)
+	if ECS.entity_has_component(other, "harmsunitcomponent"):
+		var main = get_tree().get_root().get_node("Main")
+		main.unit_harmed(mover)
+	
+	if ECS.entity_has_component(mover, "removeoncollisioncomponent"):
+		ECS.remove_entity(mover)
+	if ECS.entity_has_component(other, "removeoncollisioncomponent"):
+		ECS.remove_entity(other)
+
 	if blocks:
 		var mv = ECS.entity_get_component(mover, "CanMoveComponent")
 		mover.position = mv.prev_pos
 		var c = ECS.entity_get_component(mover, "destinationcomponent")
 		c.has_destination = false
-		
-	if ECS.entity_has_component(other, "harmsunitcomponent"):
-		var main = get_tree().get_root().get_node("Main")
-		main.unit_killed()
 	
-	if ECS.entity_has_component(other, "removeoncollisioncomponent"):
-		ECS.remove_entity(other)
-	if ECS.entity_has_component(mover, "removeoncollisioncomponent"):
-		ECS.remove_entity(mover)
+	# Doors
+	if ECS.entity_has_component(other, "IsDoorComponent"):
+		var door = ECS.entity_get_component(other, "IsDoorComponent")
+		door.touched = true
 	pass

@@ -21,6 +21,5 @@ func on_process_entity(entity : Entity, delta: float):
 				
 		$AudioStreamPlayer2D.stream = sfx
 		$AudioStreamPlayer2D.play()
-		#c.to_play = 0
 	pass
 	

@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://gs_ecs/component.gd"
 }, {
+"base": "System",
+"class": "DoorSystem",
+"language": "GDScript",
+"path": "res://systems/DoorSystem.gd"
+}, {
 "base": "Node",
 "class": "Entity",
 "language": "GDScript",
@@ -48,6 +53,11 @@ _global_script_classes=[ {
 "class": "HasVoiceComponent",
 "language": "GDScript",
 "path": "res://components/HasVoiceComponent.gd"
+}, {
+"base": "Component",
+"class": "IsDoorComponent",
+"language": "GDScript",
+"path": "res://components/IsDoorComponent.gd"
 }, {
 "base": "Component",
 "class": "IsUnitComponent",
@@ -89,10 +99,12 @@ _global_script_class_icons={
 "CollidesComponent": "",
 "CollisionSystem": "",
 "Component": "",
+"DoorSystem": "",
 "Entity": "",
 "FogOfWarSystem": "",
 "Group": "",
 "HasVoiceComponent": "",
+"IsDoorComponent": "",
 "IsUnitComponent": "",
 "Main": "",
 "Pistol": "",

@@ -13,3 +13,8 @@ var SPEECH_DIED = 5
 var CMD_MOVE = 1
 var CMD_PICKUP = 2
 var CMD_USE = 3
+
+# Door states
+var DOOR_OPENING = 1
+var DOOR_OPEN = 2
+var DOOR_CLOSING = 3

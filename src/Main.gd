@@ -173,6 +173,7 @@ func entity_killed(e, iuc):
 	
 
 func play_sfx(file : String):
+	print("Playing " + file)
 	var sfx = load("res://assets/sfx/" + file)
 	$AudioStreamPlayer2D.stream = sfx
 	$AudioStreamPlayer2D.play()
