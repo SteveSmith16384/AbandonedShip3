@@ -136,7 +136,7 @@ func select_unit_by_name(name : String):
 	select_unit_by_entity(units[name])
 	
 	
-func select_unit_by_entity(e):
+func select_unit_by_entity(e : Entity):
 	selected_unit = e
 	if e != null:
 		if ECS.entity_has_component(selected_unit, "hasvoicecomponent"):
@@ -154,7 +154,7 @@ func append_to_log(text : String):
 	pass
 
 
-func set_unit_health(entity, health):
+func set_unit_health(entity : Entity, health : int):
 	var iuc = ECS.entity_get_component(entity, "isunitcomponent")
 	var usb = iuc.unit_selector_button
 	if usb:
@@ -163,7 +163,7 @@ func set_unit_health(entity, health):
 	pass
 	
 	
-func entity_killed(e, iuc):
+func entity_killed(e : Entity, iuc : IsUnitComponent):
 	if units.has(iuc.unit_name):
 		units.erase(iuc.unit_name)
 		if selected_unit == e:
@@ -182,5 +182,12 @@ func play_sfx(file : String):
 
 func set_command(cmd : int):
 	current_command = cmd
+	pass
+	
+
+func unit_harmed(unit : Entity):
+	var iuc : IsUnitComponent = ECS.entity_get_component(unit, "IsUnitComponent")
+	#entity_killed(unit, iuc)
+	iuc.damage_this_loop = 100 #todo
 	pass
 	

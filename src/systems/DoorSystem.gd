@@ -26,4 +26,4 @@ func on_process_entity(entity : Entity, delta: float):
 	# Set blocks
 	var coll : CollidesComponent = entity.get_node("CollidesComponent")
 	coll.blocks = door.time_spent_opening < SECS_TO_OPEN
-	
+	#todo - open door sprite entity.get_node("Sprite").visible = coll.blocks

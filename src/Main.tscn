@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://systems/SelectUnitSystem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://systems/FlashBlipSystem.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://systems/PickupSystem.tscn" type="PackedScene" id=14]
 [ext_resource path="res://systems/CollisionSystem.tscn" type="PackedScene" id=15]
 [ext_resource path="res://systems/DoorSystem.tscn" type="PackedScene" id=16]
+[ext_resource path="res://systems/AlienAISystem.tscn" type="PackedScene" id=17]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 4 )
@@ -38,6 +39,8 @@ current = true
 [node name="FogOfWarSystem" parent="Systems" instance=ExtResource( 9 )]
 
 [node name="ShootingSystem" parent="Systems" instance=ExtResource( 10 )]
+
+[node name="AlienAISystem" parent="Systems" instance=ExtResource( 17 )]
 
 [node name="VoiceSystem" parent="Systems" instance=ExtResource( 11 )]
 

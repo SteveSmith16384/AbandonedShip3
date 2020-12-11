@@ -3,9 +3,8 @@ extends Component
 
 # Is a unit, may be players or an enemy.  Can shoot and be shot at.
 
-export var side : int
-
 export var unit_name : String
+var is_players : bool
 export var health : float = 100
 var unit_selector_button
 var current_item : Entity

@@ -10,6 +10,7 @@ func on_process_entity(entity : Entity, delta: float):
 			var velocity = (c.destination - entity.position).normalized() * s.speed
 			var new_velocity = entity.move_and_slide(velocity)
 		else:
+			# Got to destination
 			var unit = ECS.entity_get_component(entity, "isunitcomponent")
 			var main = get_tree().get_root().get_node("Main")
 			main.append_to_log(unit.unit_name + " has arrived")

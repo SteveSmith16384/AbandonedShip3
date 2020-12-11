@@ -187,6 +187,7 @@ func entity_add_component(entity, component):
 func entity_get_component(entity, component_name):
 	Logger.trace("[ECS] entity_get_component")
 	if (component_entities.has(component_name.to_lower())):
+		# If you get an error here, the entity probably hasn't got the component
 		return component_entities[component_name.to_lower()][entity.id]
 
 

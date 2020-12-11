@@ -29,7 +29,7 @@ func check_if_visible(enemy):
 						dc.has_destination = false
 				
 			enemy.get_node("Sprite").visible = true
-			break;
+			break
 	
 	if not seen:
 		enemy.get_node("Sprite").visible = false

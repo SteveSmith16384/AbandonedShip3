@@ -25,10 +25,10 @@ func collision(mover2, with2, blocks: bool):
 	
 
 func process_collision(mover : Entity, other : Entity, blocks: bool):
-	if ECS.entity_has_component(mover, "harmsunitcomponent"):
+	if ECS.entity_has_component(mover, "HarmsUnitComponent"):
 		var main = get_tree().get_root().get_node("Main")
 		main.unit_harmed(other)
-	if ECS.entity_has_component(other, "harmsunitcomponent"):
+	if ECS.entity_has_component(other, "HarmsUnitComponent"):
 		var main = get_tree().get_root().get_node("Main")
 		main.unit_harmed(mover)
 	
