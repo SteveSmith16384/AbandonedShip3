@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/tom_theres_something_here.wav-58492c86cc77954d9b3a34bd8a81c970.sample"
+
+[deps]
+
+source_file="res://assets/sfx/voices/tom/tom_theres_something_here.wav"
+dest_files=[ "res://.import/tom_theres_something_here.wav-58492c86cc77954d9b3a34bd8a81c970.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

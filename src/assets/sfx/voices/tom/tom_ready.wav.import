@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/tom_ready.wav-877c827ff28cc7fac6da77ede44bc78f.sample"
+
+[deps]
+
+source_file="res://assets/sfx/voices/tom/tom_ready.wav"
+dest_files=[ "res://.import/tom_ready.wav-877c827ff28cc7fac6da77ede44bc78f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

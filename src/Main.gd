@@ -25,12 +25,9 @@ func create_player_units():
 				start_pos = child.position
 				break
 	
-	var syylk = create_player_unit("zark", start_pos)
-	create_player_unit("syylk", start_pos)
-	create_player_unit("sevrina", start_pos)
-	create_player_unit("torik", start_pos)
-	create_player_unit("manto", start_pos)
-	create_player_unit("maul", start_pos)
+	var syylk = create_player_unit("hazel", start_pos)
+	create_player_unit("sam", start_pos)
+	create_player_unit("tom", start_pos)
 	
 	selected_unit = syylk
 	pass
@@ -175,8 +172,8 @@ func entity_killed(e : Entity, iuc : IsUnitComponent):
 func play_sfx(file : String):
 	print("Playing " + file)
 	var sfx = load("res://assets/sfx/" + file)
-	$AudioStreamPlayer2D.stream = sfx
-	$AudioStreamPlayer2D.play()
+	$AudioStreamPlayer.stream = sfx
+	$AudioStreamPlayer.play()
 	pass
 	
 

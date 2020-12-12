@@ -1,5 +1,8 @@
 extends Node
 
+# Units
+var HAZEL = 1
+var SAM = 2
 
 # Speech
 var SPEECH_READY = 1

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/tom_i_don't_kn ow_what_it_is.wav-724cee8fc2a7760b1f5253d38bf45edb.sample"
+
+[deps]
+
+source_file="res://assets/sfx/voices/tom/tom_i_don't_kn ow_what_it_is.wav"
+dest_files=[ "res://.import/tom_i_don't_kn ow_what_it_is.wav-724cee8fc2a7760b1f5253d38bf45edb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
