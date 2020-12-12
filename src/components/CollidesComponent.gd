@@ -1,7 +1,7 @@
 class_name CollidesComponent # todo - rename to Collider
 extends Area2D
 
-# This is not a proper component!
+# This is not a proper component!  Todo - delete this
 
 export var blocks : bool
 

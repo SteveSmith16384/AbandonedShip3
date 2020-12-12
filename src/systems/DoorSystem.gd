@@ -1,7 +1,7 @@
 class_name DoorSystem
 extends System
 
-const SECS_TO_OPEN = 1
+const SECS_TO_OPEN = 2
 const SECS_STAY_OPEN = 5
 
 
@@ -24,6 +24,7 @@ func on_process_entity(entity : Entity, delta: float):
 			door.time_spent_opening = 0
 	
 	# Set blocks
-	var coll : CollidesComponent = entity.get_node("CollidesComponent")
-	coll.blocks = door.time_spent_opening < SECS_TO_OPEN
+	#var coll : CollidesComponent = entity.get_node("CollidesComponent")
+	var blocks = door.time_spent_opening < SECS_TO_OPEN
+	entity.get_node("CollisionShape2D").disabled = !blocks
 	#todo - open door sprite entity.get_node("Sprite").visible = coll.blocks

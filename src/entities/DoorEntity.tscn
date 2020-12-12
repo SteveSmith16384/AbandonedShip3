@@ -1,17 +1,19 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://components/CollidesComponent.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/IsHiddenComponent.tscn" type="PackedScene" id=2]
 [ext_resource path="res://entities/DoorEntity.gd" type="Script" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
 [ext_resource path="res://components/IsDoorComponent.tscn" type="PackedScene" id=5]
 
-[node name="DoorEntity" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12.8336, 29.2505 )
+
+[node name="DoorEntity" type="StaticBody2D"]
 script = ExtResource( 3 )
 
-[node name="CollidesComponent" parent="." instance=ExtResource( 1 )]
-scale = Vector2( 1.04, 1 )
-blocks = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 2.24, 1 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 4 )
