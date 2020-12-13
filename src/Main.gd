@@ -134,6 +134,7 @@ func select_unit_by_name(name : String):
 	
 	
 func select_unit_by_entity(e : Entity):
+	stop_playing() # Mainly to stop playing static
 	selected_unit = e
 	if e != null:
 		if ECS.entity_has_component(selected_unit, "hasvoicecomponent"):
@@ -141,6 +142,9 @@ func select_unit_by_entity(e : Entity):
 			hvc.to_play.push_back(Globals.SPEECH_READY)
 		var scbs = ECS.entity_get_component(e, "isunitcomponent")
 		append_to_log(scbs.unit_name + " selected")
+	else:
+		# Play static
+		play_sfx("white noise.wav")
 	pass
 
 
@@ -161,11 +165,13 @@ func set_unit_health(entity : Entity, health : int):
 	
 	
 func entity_killed(e : Entity, iuc : IsUnitComponent):
+	if e == selected_unit:
+		selected_unit = null
+		# Play static
+		play_sfx("white noise.wav")
 	if units.has(iuc.unit_name):
 		units.erase(iuc.unit_name)
-		if selected_unit == e:
-			selected_unit = null
-		# todo - hide button?
+	#iuc.unit_selector_button.visible = false
 	pass
 	
 
@@ -177,6 +183,11 @@ func play_sfx(file : String):
 	pass
 	
 
+func stop_playing():
+	$AudioStreamPlayer.stop()
+	pass
+	
+	
 func set_command(cmd : int):
 	current_command = cmd
 	pass
