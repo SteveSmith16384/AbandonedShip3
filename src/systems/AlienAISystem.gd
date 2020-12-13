@@ -2,8 +2,10 @@ extends System
 
 var main
 var space_state
+var rng = RandomNumberGenerator.new()
 
 func _ready():
+	rng.randomize()
 	main = get_tree().get_root().get_node("Main")
 	var space_rid = main.get_world_2d().space
 	space_state = Physics2DServer.space_get_direct_state(space_rid)
@@ -30,6 +32,11 @@ func check_if_visible(alien : Entity, player : Entity):
 		var dc : DestinationComponent = ECS.entity_get_component(alien, "DestinationComponent")
 		dc.has_destination = true
 		dc.destination = player.position
+		
+		var main = get_tree().get_root().get_node("Main")
+		#main.play_sfx("aliennoise1.wav")
+		var filename = "monster_sfx_pack_2/monster-" + str(rng.randi_range(1, 17)) + ".wav"
+		main.play_sfx(filename)
 		# Stop moving if an ememy?
 #		if ECS.entity_has_component(enemy, "isunitcomponent"): # must be an enemy
 #			# Voice

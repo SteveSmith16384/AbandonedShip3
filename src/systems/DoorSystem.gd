@@ -1,7 +1,7 @@
 class_name DoorSystem
 extends System
 
-const SECS_TO_OPEN = 2
+const SECS_TO_OPEN = 1
 const SECS_STAY_OPEN = 5
 
 

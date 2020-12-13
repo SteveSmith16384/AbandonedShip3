@@ -39,14 +39,14 @@ func process_collision(mover : Entity, other : Entity, blocks: bool):
 	if other && ECS.entity_has_component(other, "removeoncollisioncomponent"):
 		ECS.remove_entity(other)
 
-	if blocks:
+	# Doors
+	if other && ECS.entity_has_component(other, "IsDoorComponent"):
+		var door = ECS.entity_get_component(other, "IsDoorComponent")
+		door.touched = true
+	elif blocks:
 		var mv = ECS.entity_get_component(mover, "CanMoveComponent")
 		mover.position = mv.prev_pos
 		var c = ECS.entity_get_component(mover, "destinationcomponent")
 		c.has_destination = false
 	
-	# Doors
-	if other && ECS.entity_has_component(other, "IsDoorComponent"):
-		var door = ECS.entity_get_component(other, "IsDoorComponent")
-		door.touched = true
 	pass

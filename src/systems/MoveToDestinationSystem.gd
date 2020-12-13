@@ -9,8 +9,6 @@ func on_process_entity(entity, delta: float):
 			s.prev_pos = entity.position
 			var velocity = (c.destination - entity.position).normalized() * s.speed
 			var new_velocity = entity.move_and_slide(velocity)
-			#if "get_slide_count" in entity:
-			#var coll : KinematicCollision2D = entity.move_and_collide(velocity * delta)
 			var count = entity.get_slide_count()
 			if count > 0:
 				var collision : KinematicCollision2D = entity.get_slide_collision(count - 1)

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/monster-4.wav-2a78ca37b0f8631f12fd32d0594936bc.sample"
+
+[deps]
+
+source_file="res://assets/sfx/monster_sfx_pack_2/monster-4.wav"
+dest_files=[ "res://.import/monster-4.wav-2a78ca37b0f8631f12fd32d0594936bc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
