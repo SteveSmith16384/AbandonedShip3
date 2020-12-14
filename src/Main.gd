@@ -6,8 +6,10 @@ var units = {}
 var screen_size : Vector2
 var entity_factory
 var current_command : int
+var rnd = RandomNumberGenerator.new()
 
 func _ready():
+	rnd.randomize()
 	var ef = load("res://EntityFactory.tscn")
 	entity_factory = ef.instance()
 
@@ -18,21 +20,21 @@ func _ready():
 	
 	
 func create_player_units():
-	var start_pos = null
-	for child in get_node("Entities/MapEntity/StartPositions").get_children():
-		if child is Node2D:
-			if child.type == 0:
-				start_pos = child.position
-				break
-	
-	var syylk = create_player_unit("hazel", start_pos)
-	create_player_unit("sam", start_pos)
-	create_player_unit("tom", start_pos)
-	
+	var syylk = create_player_unit("hazel", getStartPosition())
+	create_player_unit("sam", getStartPosition())
+	create_player_unit("tom", getStartPosition())
 	selected_unit = syylk
 	pass
 	
+	
+func getStartPosition():
+	var sz = get_node("Entities/MapEntity/StartPositions").get_children().size()
+	var id = rnd.randi_range(1, sz)
+	var pos = get_node("Entities/MapEntity/StartPositions").get_child(id)
+	get_node("Entities/MapEntity/StartPositions").remove_child(pos)
+	return pos.position
 
+	
 func create_player_unit(name, start_pos : Vector2):
 	var syylk = entity_factory.create_player_unit(self, name, start_pos)
 

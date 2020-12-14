@@ -1,6 +1,6 @@
 extends Component
 
-#var eq_name : String
+export var eq_name : String
 var can_shoot : bool
 var shot_dist : float
 var shot_power : float

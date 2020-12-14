@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/3.ogg-a9e0eb4d9968ae1f1ed14ee0c2e43a11.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/female_screams/3.ogg"
+dest_files=[ "res://.import/3.ogg-a9e0eb4d9968ae1f1ed14ee0c2e43a11.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

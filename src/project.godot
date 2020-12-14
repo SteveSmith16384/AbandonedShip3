@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://gs_ecs/entity.gd"
 }, {
+"base": "Entity",
+"class": "EquipmentEntity",
+"language": "GDScript",
+"path": "res://entities/EquipmentEntity.gd"
+}, {
 "base": "System",
 "class": "FogOfWarSystem",
 "language": "GDScript",
@@ -117,6 +122,7 @@ _global_script_class_icons={
 "DestinationComponent": "",
 "DoorSystem": "",
 "Entity": "",
+"EquipmentEntity": "",
 "FogOfWarSystem": "",
 "Group": "",
 "HarmsUnitComponent": "",
