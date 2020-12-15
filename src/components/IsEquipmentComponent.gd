@@ -1,3 +1,4 @@
+class_name IsEquipmentComponent
 extends Component
 
 export var eq_name : String

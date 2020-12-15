@@ -14,7 +14,8 @@ func _ready():
 	entity_factory = ef.instance()
 
 	create_player_units()
-	#create_enemy_units()
+	create_enemy_units()
+	create_equipment()
 	screen_size = get_viewport().size
 	append_to_log("Ready!")
 	
@@ -29,7 +30,7 @@ func create_player_units():
 	
 func getStartPosition():
 	var sz = get_node("Entities/MapEntity/StartPositions").get_children().size()
-	var id = rnd.randi_range(1, sz)
+	var id = rnd.randi_range(0, sz-1)
 	var pos = get_node("Entities/MapEntity/StartPositions").get_child(id)
 	get_node("Entities/MapEntity/StartPositions").remove_child(pos)
 	return pos.position
@@ -60,13 +61,15 @@ func create_player_unit(name, start_pos : Vector2):
 	
 	
 func create_enemy_units():
-	for child in get_node("StartPositions").get_children():
-		if child is Node2D:
-			if child.type == 1: # enemy position
-				var start_pos = child.position
-				var name = "alien" # todo
-				#var syylk_img = load("res://assets/sprites/" + name + ".png")
-				entity_factory.create_enemy_unit(self, name, start_pos)
+	var name = "alien" # todo
+	entity_factory.create_enemy_unit(self, name, getStartPosition())
+	entity_factory.create_enemy_unit(self, name, getStartPosition())
+	pass
+	
+
+func create_equipment():
+	entity_factory.create_gun(self, getStartPosition())
+	entity_factory.create_gun(self, getStartPosition())
 	pass
 	
 
@@ -75,7 +78,6 @@ func _process(delta):
 	
 	if selected_unit:
 		$Camera2D.position = selected_unit.position
-
 	pass
 	
 	
@@ -127,7 +129,8 @@ func set_destination(position : Vector2):
 func unit_pickup_entity(entity : Entity):
 	var scbs = ECS.entity_get_component(selected_unit, "isunitcomponent")
 	scbs.to_pickup = entity
-	append_to_log("Unit will pick up " + entity.name)
+	var iseq : IsEquipmentComponent = ECS.entity_get_component(entity, "IsEquipmentComponent")
+	append_to_log("Unit will pick up " + iseq.eq_name)
 	pass
 	
 	

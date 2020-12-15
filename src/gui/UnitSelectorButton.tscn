@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://gui/UnitSelectorButton.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/vegastrike-portraits-640x480/women29.png" type="Texture" id=2]
 
 [sub_resource type="Theme" id=1]
 
@@ -12,8 +12,8 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="."]
-margin_right = 109.0
-margin_bottom = 70.0
+margin_right = 685.0
+margin_bottom = 198.0
 theme = SubResource( 1 )
 text = "Todo"
 icon = ExtResource( 2 )
@@ -22,9 +22,9 @@ __meta__ = {
 }
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-margin_top = 74.0
-margin_right = 109.0
-margin_bottom = 88.0
+margin_top = 202.0
+margin_right = 685.0
+margin_bottom = 216.0
 size_flags_stretch_ratio = 10.0
 step = 1.0
 value = 50.0

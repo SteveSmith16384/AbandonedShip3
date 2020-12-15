@@ -42,6 +42,7 @@ speed = 150
 
 [node name="IsUnitComponent" parent="Components" instance=ExtResource( 6 )]
 unit_name = "Alien"
+side = 1
 health = 10.0
 
 [node name="IsAlienComponent" parent="Components" instance=ExtResource( 7 )]

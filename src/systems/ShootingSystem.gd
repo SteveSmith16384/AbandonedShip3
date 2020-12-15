@@ -18,9 +18,6 @@ func on_process_entity(entity : Entity, delta: float):
 		print("Diff: " + str(diff))
 		return
 		
-	if cbs.current_item == null:
-		return
-		
 	var item = cbs.current_item
 	var iseq = ECS.entity_get_component(item, "isequipmentcomponent")
 	if iseq.can_shoot == false:

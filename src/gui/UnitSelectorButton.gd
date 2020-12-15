@@ -1,7 +1,7 @@
 class_name UnitSelectorButton
 extends VBoxContainer
 
-var unit # This gets set when the button is created
+var unit : Entity # This gets set when the button is created
 
 
 func _on_Button_pressed():
