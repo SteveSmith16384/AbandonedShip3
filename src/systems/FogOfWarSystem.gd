@@ -7,7 +7,7 @@ func on_process_entity(entity : Entity, delta: float):
 
 
 func check_if_visible(enemy):
-	var main = get_tree().get_root().get_node("Main")
+	var main : Main = get_tree().get_root().get_node("Main")
 	var space_rid = main.get_world_2d().space
 	var space_state = Physics2DServer.space_get_direct_state(space_rid)
 	
@@ -17,6 +17,7 @@ func check_if_visible(enemy):
 		if seen:
 			# Stop moving if an ememy?
 			if ECS.entity_has_component(enemy, "isunitcomponent"): # must be an enemy
+				main.play_sfx("tracker_reduced.wav")
 				# Voice
 				if enemy.get_node("Sprite").visible == false:
 					if ECS.entity_has_component(unit, "hasvoicecomponent"):

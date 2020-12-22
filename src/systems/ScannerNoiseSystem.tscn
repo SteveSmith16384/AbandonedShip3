@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://systems/ScannerNoiseSystem.gd" type="Script" id=1]
+[ext_resource path="res://assets/sfx/tracker_reduced.wav" type="AudioStream" id=2]
+
+[node name="ScannerNoiseSystem" type="Node"]
+script = ExtResource( 1 )
+COMPONENTS = "IsAlienComponent"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )

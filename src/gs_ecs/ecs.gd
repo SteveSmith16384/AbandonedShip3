@@ -337,7 +337,6 @@ func remove_system(system_name):
 
 # update the systems, specified by group name (or not)
 func update(group = null, delta = null):
-
 	# rebuild if dirty
 	if is_dirty:
 		Logger.debug("- system is dirty, rebuilding indexes")
@@ -375,7 +374,6 @@ func update(group = null, delta = null):
 	
 	# full cleaning requested?
 	if (do_clean):
-		
 		entities.clear()
 		component_entities.clear()
 		systems.clear()

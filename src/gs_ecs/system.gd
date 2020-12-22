@@ -31,9 +31,18 @@ func on_after_remove():
 	Logger.trace("[system] on_after_remove")
 
 func on_process(entities, delta):
+	on_start_processing_entities()
 	for entity in entities:
 		on_process_entity(entity, delta)
+	on_finished_processing_entities()
 
+
+func on_start_processing_entities():
+	pass
+
+func on_finished_processing_entities():
+	#  Called when all entities have been processed
+	pass
 
 func on_process_entity(entity, delta):
 	Logger.trace("[system] on_process_entity")
