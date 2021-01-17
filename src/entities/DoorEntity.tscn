@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/sprites/greensquare_bright1.png" type="Texture" id=1]
-[ext_resource path="res://components/IsHiddenComponent.tscn" type="PackedScene" id=2]
 [ext_resource path="res://entities/DoorEntity.gd" type="Script" id=3]
 [ext_resource path="res://components/IsDoorComponent.tscn" type="PackedScene" id=5]
 
@@ -21,5 +20,3 @@ texture = ExtResource( 1 )
 [node name="Components" type="Node" parent="."]
 
 [node name="IsDoorComponent" parent="Components" instance=ExtResource( 5 )]
-
-[node name="IsHiddenComponent" parent="Components" instance=ExtResource( 2 )]
